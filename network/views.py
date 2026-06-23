@@ -10,13 +10,6 @@ from .models import User
 def index(request):
     return render(request, "network/index.html")
 
-# placeholder function
-def hello(request):
-    return JsonResponse({
-        'message': 'Oporra.'
-    })
-
-
 def login_view(request):
     if request.method == "POST":
 

@@ -1,10 +1,7 @@
-import Hello from './Hello'
-
 function App() {
     return (
         <div>
-            <Hello />
-            <Hello />
+            todo. Ler Providers Globais no obsidian
         </div>
     )
 }
