@@ -5,7 +5,7 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: '../network/static/network/react',
+    outDir: '../static/network/react',
     emptyOutDir: true,
     rollupOptions: {
       input: resolve(__dirname, 'src/main.jsx'),
