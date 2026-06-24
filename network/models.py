@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 class User(AbstractUser):
-    # o parâmetro symmetrical significa que A -> B mas B !<- A
+    # o parâmetro symmetrical false significa que A -> B mas B !<- A
     following = models.ManyToManyField('self', related_name='followers', blank=True, symmetrical=False)
 
     def clean(self):
