@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 function Following() {
-
+    
+    // Temporary setup
     const [data, setData] = useState("Loading…");
 
     useEffect(() => {

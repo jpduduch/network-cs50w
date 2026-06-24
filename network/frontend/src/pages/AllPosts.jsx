@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function AllPosts() {
-
+    // Temporary setup.
     const [data, setData] = useState("Loading…");
 
     useEffect(() => {
