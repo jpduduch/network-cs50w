@@ -1,14 +1,19 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from .models import User
 
+def layout(request):
+    return render(request, "network/layout.html")
 
-def index(request):
-    return render(request, "network/index.html")
+def posts(request):
+    return JsonResponse({ 'data': 'All posts' }, status=200)
+
+def following(request):
+    return JsonResponse({ 'data': 'Following' }, status=200)
 
 def login_view(request):
     if request.method == "POST":

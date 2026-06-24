@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 
-function AllPosts() {
+function Following() {
 
     const [data, setData] = useState("Loading…");
 
     useEffect(() => {
-        fetch('api/all-posts')
+        fetch('api/following')
         .then(response => response.json())
         .then(data => setData(data.data))
     }, [])
 
-
-    return (
+    return(
         <div>
             {data}
         </div>
     )
 }
 
-export default AllPosts
+export default Following
