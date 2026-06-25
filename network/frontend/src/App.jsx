@@ -5,10 +5,12 @@ import Following from './pages/Following.jsx';
 function App() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={ <AllPosts /> } />
-                <Route path="/following" element={ <Following /> } />
-            </Routes>
+            <div className='container py-5 row d-flex justify-content-center' id="main">
+                <Routes>
+                    <Route path="/" element={ <AllPosts /> } />
+                    <Route path="/following" element={ <Following /> } />
+                </Routes>
+            </div>
         </BrowserRouter>
     )
 }

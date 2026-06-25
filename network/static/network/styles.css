@@ -1,0 +1,12 @@
+#root {
+    width: 100%;
+    display: flex;
+}
+
+#main {
+    margin: 0 auto;
+}
+
+textarea {
+    height: 128px !important;
+}
