@@ -1,7 +1,7 @@
-function Button({ label }) {
+function Button({ label, onClick }) {
     return (
         <div>
-            <button className="btn btn-primary">{label}</button>
+            <button className="btn btn-primary" onClick={onClick}>{label}</button>
         </div>
     )
 }

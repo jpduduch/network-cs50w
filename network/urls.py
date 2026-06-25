@@ -13,4 +13,5 @@ urlpatterns = [
     # api calls
     path("api/all-posts", views.posts, name="all_posts"),
     path("api/following", views.following, name="following_posts"),
+    path("api/send-post", views.send_post, name="send_post")
 ]

@@ -1,3 +1,5 @@
+import json
+from django.middleware.csrf import get_token
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -7,10 +9,24 @@ from django.urls import reverse
 from .models import User
 
 def layout(request):
+    get_token(request)
     return render(request, "network/layout.html")
 
 def posts(request):
     return JsonResponse({ 'data': 'All posts' }, status=200)
+
+def send_post(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "POST request required."}, status=400)
+    
+    if not request.user.is_authenticated:
+        return JsonResponse({"error": "User must be authenticated to post."})
+    
+    data = json.loads(request.body)
+    print(data["content"])
+
+    return JsonResponse({"feedback": "Post sent successfully."})
+
 
 def following(request):
     return JsonResponse({ 'data': 'Following' }, status=200)

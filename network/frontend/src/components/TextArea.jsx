@@ -1,16 +1,12 @@
-import { useState } from "react";
-
-function TextArea({ label }) {
-
-    const [value, setValue] = useState();
-
-    function updateValue(event) {
-        setValue(event.key)
-    }
-
+function TextArea({ label, value, onChange }) {
     return (
         <div className="form-floating">
-            <textarea className="form-control" id="new-post" onChange={(event) => updateValue(event)}>{value}</textarea>
+            <textarea 
+                className="form-control"
+                id="new-post" 
+                onChange={ (event) => { onChange(event.target.value) } }
+                value={value} 
+            />
             <label htmlFor="new-post">{label}</label>
         </div>
     )
