@@ -7,10 +7,6 @@ class User(AbstractUser):
     # o parâmetro symmetrical false significa que A -> B mas B !<- A
     following = models.ManyToManyField('self', related_name='followers', blank=True, symmetrical=False)
 
-    def clean(self):
-        if self.following == self:
-            raise ValidationError("User cannot follow self.")
-
 
 class Post(models.Model):
     content = models.TextField()
