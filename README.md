@@ -4,6 +4,8 @@ A customized project from CS50w's Threads/Twitter-style social network built wit
 
 > Developed as part of [CS50's Web Programming with Python and JavaScript](https://cs50.harvard.edu/web/).
 
+This project uses the Network specs from CS50w as a base, but it goes in a different direction. Using it for your own solution will most likely result in a failing grade.
+
 ---
 
 ## Tech Stack
