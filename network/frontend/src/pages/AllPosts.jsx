@@ -3,7 +3,7 @@ import NewPost from "../modules/NewPost";
 
 function AllPosts() {
     // Temporary setup.
-    const [data, setData] = useState("Loading…");
+    // const [data, setData] = useState("Loading…");
 
     // useEffect(() => {
     //     fetch('api/all-posts')
