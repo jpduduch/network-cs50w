@@ -1,12 +1,16 @@
 import json
 from django.middleware.csrf import get_token
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.views.decorators.http import require_POST
 
-from .models import User
+
+from .models import User, Post
 
 def layout(request):
     get_token(request)
@@ -15,20 +19,26 @@ def layout(request):
 def posts(request):
     return JsonResponse({ 'data': 'All posts' }, status=200)
 
+@login_required
+@require_POST
 def send_post(request):
-    if request.method != "POST":
-        return JsonResponse({"error": "POST request required."}, status=400)
-    
-    if not request.user.is_authenticated:
-        return JsonResponse({"error": "User must be authenticated to post."})
     
     data = json.loads(request.body)
     print(data["content"])
+
+    post = Post(content=data["content"], author=request.user)
+
+    try:
+        post.full_clean()
+        post.save()
+    except ValidationError as e:
+        return JsonResponse({"error": str(e)}, status=400)
 
     return JsonResponse({"feedback": "Post sent successfully."})
 
 
 def following(request):
+    # todo
     return JsonResponse({ 'data': 'Following' }, status=200)
 
 def login_view(request):
