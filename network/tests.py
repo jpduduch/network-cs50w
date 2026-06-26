@@ -1,6 +1,6 @@
+import json
 from django.db import IntegrityError
-from django.core.exceptions import ValidationError
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import User, Post
 
 # Create your tests here.
@@ -76,3 +76,47 @@ class ModelPostTests(TestCase):
         posts_from_following = Post.objects.filter(author__followers=self.user_c)
         self.assertTrue(posts_from_following.exists())
         self.assertFalse(posts_from_following.contains(post_a))
+
+
+class ViewPostTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user_a = User.objects.create_user(username="user_a", password="123")
+        self.user_b = User.objects.create_user(username="user_b", password="123")
+
+        Post.objects.create(content="ABC", author=self.user_a)
+        Post.objects.create(content="DEF", author=self.user_b)
+
+        self.send_post_addr = "/api/send-post/"
+
+    def test_create_post_requires_login(self):
+        response = self.client.post(
+            self.send_post_addr,
+            data=json.dumps({"content": "content"}),
+            content_type="application/json",
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+    def test_authenticated_user_can_create_post(self):
+        self.client.login(username="user_a", password="123")
+
+        response = self.client.post(
+            self.send_post_addr,
+            data=json.dumps({"content": "Novo post"}),
+            content_type="application/json"
+        )
+
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(Post.objects.count(), 3)
+
+    def test_post_rejects_empty_content(self):
+        self.client.login(username="user_a", password="123")
+
+        response = self.client.post(
+            self.send_post_addr,
+            data=json.dumps({"content": ""}),
+            content_type="application/json"
+        )
+
+        self.assertEqual(response.status_code, 400)

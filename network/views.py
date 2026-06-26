@@ -13,6 +13,8 @@ from django.views.decorators.http import require_POST
 from .models import User, Post
 
 def layout(request):
+    
+    # place CSRF token into request variable sent to client
     get_token(request)
     return render(request, "network/layout.html")
 
@@ -79,13 +81,11 @@ def register(request):
 
 
 # API calls
-@login_required
+@login_required(login_url="/login/")
 @require_POST
 def send_post(request):
     
     data = json.loads(request.body)
-    print(data["content"])
-
     post = Post(content=data["content"], author=request.user)
 
     try:
@@ -94,7 +94,7 @@ def send_post(request):
     except ValidationError as e:
         return JsonResponse({"error": e.message_dict}, status=400)
 
-    return JsonResponse({"message": "Post sent successfully."})
+    return JsonResponse({"message": "Post sent successfully."}, status=201)
 
 
 def me(request):
