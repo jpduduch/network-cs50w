@@ -8,7 +8,7 @@ function NewPost() {
     const [content, setContent] = useState("");
 
     function handleSubmit() {
-        fetch('api/send-post', {
+        fetch('/api/send-post', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

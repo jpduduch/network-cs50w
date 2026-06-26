@@ -16,30 +16,15 @@ def layout(request):
     get_token(request)
     return render(request, "network/layout.html")
 
+
 def posts(request):
-    return JsonResponse({ 'data': 'All posts' }, status=200)
-
-@login_required
-@require_POST
-def send_post(request):
-    
-    data = json.loads(request.body)
-    print(data["content"])
-
-    post = Post(content=data["content"], author=request.user)
-
-    try:
-        post.full_clean()
-        post.save()
-    except ValidationError as e:
-        return JsonResponse({"error": str(e)}, status=400)
-
-    return JsonResponse({"feedback": "Post sent successfully."})
+    return JsonResponse({ 'data': 'All posts (todo)' }, status=200)
 
 
 def following(request):
     # todo
-    return JsonResponse({ 'data': 'Following' }, status=200)
+    return JsonResponse({ 'data': 'Following (todo)' }, status=200)
+
 
 def login_view(request):
     if request.method == "POST":
@@ -63,7 +48,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("layout"))
 
 
 def register(request):
@@ -91,3 +76,34 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "network/register.html")
+
+
+# API calls
+@login_required
+@require_POST
+def send_post(request):
+    
+    data = json.loads(request.body)
+    print(data["content"])
+
+    post = Post(content=data["content"], author=request.user)
+
+    try:
+        post.full_clean()
+        post.save()
+    except ValidationError as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+    return JsonResponse({"feedback": "Post sent successfully."})
+
+
+def me(request):
+    if request.user.is_authenticated:
+        return JsonResponse({
+            "id": request.user.id,
+            "username": request.user.username
+        }, status=200)
+    
+    return JsonResponse({
+        "error": "Not authenticated."
+    }, status=401)

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NewPost from "../modules/NewPost";
 
-function AllPosts() {
+function AllPosts({ user }) {
     // Temporary setup.
     // const [data, setData] = useState("Loading…");
 
@@ -11,10 +11,12 @@ function AllPosts() {
     //     .then(data => setData(data.data))
     // }, [])
 
+    console.log(user)
+
     return (
         <div className=" d-flex flex-column gap-3">
             <h1>All posts</h1>
-            <NewPost />
+            { user ? <NewPost /> : null }
         </div>
     )
 }
