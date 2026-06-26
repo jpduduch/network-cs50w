@@ -92,9 +92,9 @@ def send_post(request):
         post.full_clean()
         post.save()
     except ValidationError as e:
-        return JsonResponse({"error": str(e)}, status=400)
+        return JsonResponse({"error": e.message_dict}, status=400)
 
-    return JsonResponse({"feedback": "Post sent successfully."})
+    return JsonResponse({"message": "Post sent successfully."})
 
 
 def me(request):

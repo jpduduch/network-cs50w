@@ -11,8 +11,6 @@ function AllPosts({ user }) {
     //     .then(data => setData(data.data))
     // }, [])
 
-    console.log(user)
-
     return (
         <div className=" d-flex flex-column gap-3">
             <h1>All posts</h1>

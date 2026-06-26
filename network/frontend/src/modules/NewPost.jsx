@@ -6,6 +6,7 @@ import getCSRFToken from '../utils/csrf';
 function NewPost() {
 
     const [content, setContent] = useState("");
+    const [feedback, setFeedback] = useState([]);
 
     function handleSubmit() {
         fetch('/api/send-post', {
@@ -17,22 +18,22 @@ function NewPost() {
             body: JSON.stringify({ content })
         })
         .then(response => response.json())
-        .then(message => {
-            if ("error" in message) {
-                console.log(message.error)
+        .then(feedback => {
+            if ("error" in feedback) {
+                setFeedback(feedback.error.content);
             } else {
-                console.log(message.feedback)
+                setFeedback(feedback.message);
+                setContent("");
             }
         })
     }
-
     
     return (
         <div className='d-flex flex-column gap-2'>
-            <TextArea label="What is on your mind?" onChange={ setContent } value={ content } />
+            <TextArea label="What is on your mind?" onChange={ setContent } value={ content } caption={ feedback } />
             <Button label="Post" onClick={ handleSubmit } />
         </div>
     )
 }
 
-export default NewPost
+export default NewPost;

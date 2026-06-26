@@ -1,4 +1,6 @@
-function TextArea({ label, value, onChange }) {
+import Caption from "./Caption"
+
+function TextArea({ label, value, caption, onChange }) {
     return (
         <div className="form-floating">
             <textarea 
@@ -8,6 +10,7 @@ function TextArea({ label, value, onChange }) {
                 value={value} 
             />
             <label htmlFor="new-post">{label}</label>
+            <Caption value={ caption } />
         </div>
     )
 }

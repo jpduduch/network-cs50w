@@ -14,8 +14,6 @@ function App() {
         .then(user => setCurrentUser(user))
     }, [])
 
-    console.log(currentUser)
-
     return (
         <BrowserRouter>
             <div className='container py-5 row d-flex justify-content-center' id="main">
