@@ -6,10 +6,10 @@ import getCSRFToken from '../utils/csrf';
 function NewPost() {
 
     const [content, setContent] = useState("");
-    const [feedback, setFeedback] = useState([]);
+    const [message, setMessage] = useState([]);
 
     function handleSubmit() {
-        fetch('/api/send-post', {
+        fetch('/api/send-post/', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -20,18 +20,21 @@ function NewPost() {
         .then(response => response.json())
         .then(feedback => {
             if ("error" in feedback) {
-                setFeedback(feedback.error.content);
+                setMessage(feedback.error.content);
             } else {
-                setFeedback(feedback.message);
+                setMessage(feedback.message);
                 setContent("");
             }
         })
+
     }
     
     return (
-        <div className='d-flex flex-column gap-2'>
-            <TextArea label="What is on your mind?" onChange={ setContent } value={ content } caption={ feedback } />
-            <Button label="Post" onClick={ handleSubmit } />
+        <div className='d-flex flex-column gap-2 py-4'>
+            <TextArea label="What is on your mind?" onChange={ setContent } value={ content } caption={ message } />
+            <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
+                <Button label="Post" onClick={ handleSubmit } />
+            </div>
         </div>
     )
 }

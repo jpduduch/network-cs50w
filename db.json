@@ -67,6 +67,108 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 2,
+  "fields": {
+    "content": "teste 2",
+    "author": 1,
+    "date": "2026-06-26T11:51:23.928Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 3,
+  "fields": {
+    "content": "test",
+    "author": 1,
+    "date": "2026-06-26T12:09:31.319Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 4,
+  "fields": {
+    "content": "teast2 23",
+    "author": 1,
+    "date": "2026-06-26T12:10:11.490Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 5,
+  "fields": {
+    "content": "dasda ad ad ",
+    "author": 1,
+    "date": "2026-06-26T12:10:16.813Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 6,
+  "fields": {
+    "content": "dadqre wrew ",
+    "author": 1,
+    "date": "2026-06-26T12:18:57.611Z",
+    "likes": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-06-26T07:08:51.484Z",
+    "user": 3,
+    "content_type": 1,
+    "object_id": "1",
+    "object_repr": "Post object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Likes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-06-26T07:08:57.481Z",
+    "user": 3,
+    "content_type": 1,
+    "object_id": "1",
+    "object_repr": "Post object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Likes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-06-26T07:09:15.845Z",
+    "user": 3,
+    "content_type": 1,
+    "object_id": "1",
+    "object_repr": "Post object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Likes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-06-26T07:09:27.126Z",
+    "user": 3,
+    "content_type": 1,
+    "object_id": "1",
+    "object_repr": "Post object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Likes\"]}}]"
+  }
+},
+{
   "model": "sessions.session",
   "pk": "2u0ms9ppgcdb0k4vkuopbljgo5wb5j3i",
   "fields": {

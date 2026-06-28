@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import NewPost from "../modules/NewPost";
+import Post from "../components/Post";
 
 function AllPosts({ user }) {
     // Temporary setup.
@@ -12,9 +13,10 @@ function AllPosts({ user }) {
     // }, [])
 
     return (
-        <div className=" d-flex flex-column gap-3">
+        <div className=" d-flex flex-column gap-5">
             <h1>All posts</h1>
             { user ? <NewPost /> : null }
+            <Post />
         </div>
     )
 }
