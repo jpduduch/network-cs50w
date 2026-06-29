@@ -117,6 +117,66 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 7,
+  "fields": {
+    "content": "ghfy5ty5",
+    "author": 1,
+    "date": "2026-06-28T14:19:00.971Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 8,
+  "fields": {
+    "content": "dsadasda",
+    "author": 1,
+    "date": "2026-06-28T14:19:04.434Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 9,
+  "fields": {
+    "content": "dasdas",
+    "author": 1,
+    "date": "2026-06-28T14:19:14.857Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 10,
+  "fields": {
+    "content": "dsada",
+    "author": 1,
+    "date": "2026-06-28T14:19:32.678Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 11,
+  "fields": {
+    "content": "dasda",
+    "author": 1,
+    "date": "2026-06-28T14:19:39.368Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 12,
+  "fields": {
+    "content": "dsadas",
+    "author": 1,
+    "date": "2026-06-28T14:19:48.653Z",
+    "likes": []
+  }
+},
+{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
@@ -190,6 +250,14 @@
   "fields": {
     "session_data": "e30:1wcfJH:afum8pO0cLnFZ_2B6llf-2431prqydCiy37zAqlAP6A",
     "expire_date": "2026-07-09T08:19:43.008Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ggf24nv6m9i8p61owcggbynkiz7u2u4p",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wdq4T:NPOBSj7dlBg_aJdklS2I6_globKO1tbWJfMKwZtX1_U",
+    "expire_date": "2026-07-12T14:01:17.974Z"
   }
 },
 {

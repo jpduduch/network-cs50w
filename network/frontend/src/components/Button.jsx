@@ -1,6 +1,11 @@
-function Button({ label, onClick }) {
+import Icon from './icon/Icon.jsx'
+
+function Button({ label, icon, onClick }) {
     return (
-        <button className="btn btn-primary" onClick={onClick}>{label}</button>
+        <button className="d-flex btn btn-primary justify-content-center align-items-center align-self-start gap-2" onClick={onClick}>
+            <Icon value={ icon } /> 
+            {label}
+        </button>
     )
 }
 
