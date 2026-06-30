@@ -12,7 +12,7 @@ function Button({ label, icon, onClick, hierarchy }) {
 
     return (
         <button className={`d-flex btn ${btnVariant} justify-content-center align-items-center align-self-start gap-2`}  onClick={onClick}>
-            <Icon value={ icon } /> 
+            { icon ? <Icon value={ icon } /> : null }
             {label}
         </button>
     )
