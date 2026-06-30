@@ -18,12 +18,12 @@ function Post({ content, creator, timestamp, likes }) {
                 <a href="#" class="list-group-item list-group-item-action d-flex flex-column gap-3 py-3" aria-current="true">
                     <div className='d-flex flex-column'>
                         <div class="d-flex w-100 justify-content-between">
-                            <small>username</small>
-                            <small>3 days ago</small>
+                            <small>{creator}</small>
+                            <small>{timestamp}</small>
                         </div>
-                        <p class="mb-1">Some placehdaolder content in a paragraph.</p>
+                        <p class="mb-1">{content}</p>
                     </div>
-                    <LikeButton label={'14'} hasLike={like} onClick={handleLike} />
+                    <LikeButton label={likes} hasLike={like} onClick={handleLike} />
                 </a>
             </div>
         </div>

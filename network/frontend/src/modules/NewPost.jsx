@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import TextArea from '../components/TextArea';
 import getCSRFToken from '../utils/csrf';
 
-function NewPost() {
+function NewPost({ onUpdate }) {
 
     const [content, setContent] = useState("");
     const [message, setMessage] = useState([]);
@@ -23,10 +23,10 @@ function NewPost() {
                 setMessage(feedback.error.content);
             } else {
                 setMessage(feedback.message);
+                onUpdate();
                 setContent("");
             }
         })
-
     }
     
     return (
