@@ -19,10 +19,6 @@ def layout(request):
     return render(request, "network/layout.html")
 
 
-def posts(request):
-    return JsonResponse({ 'data': 'All posts (todo)' }, status=200)
-
-
 def following(request):
     # todo
     return JsonResponse({ 'data': 'Following (todo)' }, status=200)
@@ -89,8 +85,11 @@ def send_post(request):
     post = Post(content=data["content"], author=request.user)
 
     try:
+        # Method .full_clean() validates all fields of a model instance and raises ValidationErrors if any issues are found.
         post.full_clean()
         post.save()
+
+        #Validation errors are return messages that explain why a specific field has failed to be added to database.
     except ValidationError as e:
         return JsonResponse({"error": e.message_dict}, status=400)
 
@@ -107,3 +106,7 @@ def me(request):
     return JsonResponse({
         "error": "Not authenticated."
     }, status=401)
+
+def all_posts(request):
+    posts = Post.objects.all().order_by('-date')
+    return JsonResponse([post.serialize() for post in posts], safe=False)

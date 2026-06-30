@@ -2,6 +2,7 @@ import json
 from django.db import IntegrityError
 from django.test import TestCase, Client
 from .models import User, Post
+from datetime import datetime
 
 # Create your tests here.
 
@@ -77,6 +78,14 @@ class ModelPostTests(TestCase):
         self.assertTrue(posts_from_following.exists())
         self.assertFalse(posts_from_following.contains(post_a))
 
+    def test_model_returns_correct_fields(self):
+        Post.objects.create(content="ABC", author=self.user_a)
+        post = Post.objects.all().first()
+        self.assertTrue(type(post.content), str)
+        self.assertTrue(type(post.author.username), str)
+        self.assertTrue(type(post.likes), int)
+        self.assertTrue(type(post.date), datetime)
+
 
 class ViewPostTests(TestCase):
     def setUp(self):
@@ -120,3 +129,29 @@ class ViewPostTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 400)
+
+    def test_api_returns_correct_amount_of_posts(self):
+        self.client.login(username="user_a", password="123")
+        
+        posts_initial_amount = Post.objects.all().count()
+        post_amount = 99
+        
+        for _ in range(post_amount):
+            self.client.post(
+                self.send_post_addr,
+                data=json.dumps({"content": f"Content {_}"}),
+                content_type="application/json"
+            )
+
+        self.assertEqual(post_amount, Post.objects.all().count() - posts_initial_amount)
+        api_response = self.client.get('/api/all-posts/')
+        self.assertEqual(len(api_response.json()), post_amount + posts_initial_amount)
+
+    def test_api_returns_correct_field_types(self):
+        first_post = self.client.get('/api/all-posts/').json()[0]
+        self.assertIsInstance(first_post["content"], str)
+        self.assertIsInstance(first_post["author"], str)
+        self.assertIsInstance(first_post["likes"], int)
+
+        # Ensure date is in readable format:
+        datetime.strptime(first_post["date"], "%b %d %Y, %I:%M %p")
