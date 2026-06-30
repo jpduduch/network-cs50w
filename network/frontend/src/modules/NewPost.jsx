@@ -30,10 +30,10 @@ function NewPost() {
     }
     
     return (
-        <div className='d-flex flex-column gap-2 py-4'>
+        <div className='d-flex flex-column gap-2 py-5'>
             <TextArea label="What is on your mind?" onChange={ setContent } value={ content } caption={ message } />
             <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
-                <Button label="Post" onClick={ handleSubmit } />
+                <Button label="Post" hierarchy='primary' onClick={ handleSubmit } />
             </div>
         </div>
     )

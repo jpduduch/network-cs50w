@@ -1,8 +1,17 @@
 import Button from './Button'
+import LikeButton from './custom/LikeButton'
 import Icon from './icon/Icon'
+import { useState } from 'react';
 
 function Post({ content, creator, timestamp, likes }) {
     // each post should include the username of the poster, the post content itself, the date and time at which the post was made, and the number of “likes” the post has (this will be 0 for all posts until you implement the ability to “like” a post later).
+
+    const [like, setLike] = useState(false);
+
+    function handleLike() {
+        like ? setLike(false) : setLike(true);
+    }
+
     return(
         <div className="d-flex flex-column gap-2">
             <div class="list-group">
@@ -14,7 +23,7 @@ function Post({ content, creator, timestamp, likes }) {
                         </div>
                         <p class="mb-1">Some placehdaolder content in a paragraph.</p>
                     </div>
-                    <Button icon={'thumb_up'} label={'14 likes'} />
+                    <LikeButton label={'14'} hasLike={like} onClick={handleLike} />
                 </a>
             </div>
         </div>

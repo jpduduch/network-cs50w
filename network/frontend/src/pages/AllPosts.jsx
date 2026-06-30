@@ -13,9 +13,11 @@ function AllPosts({ user }) {
     // }, [])
 
     return (
-        <div className=" d-flex flex-column gap-5">
+        <div className=" d-flex flex-column gap-2">
             <h1>All posts</h1>
             { user ? <NewPost /> : null }
+            <Post />
+            <Post />
             <Post />
         </div>
     )
