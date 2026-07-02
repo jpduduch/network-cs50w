@@ -177,6 +177,556 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 13,
+  "fields": {
+    "content": "Test",
+    "author": 1,
+    "date": "2026-06-30T08:22:44.266Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 14,
+  "fields": {
+    "content": "A sintaxe básica do map() é:\njavascriptconst novoArray = array.map((elemento, indice, arrayOriginal) => {\n  return // valor transformado\n});\nOs parâmetros do callback são:\n\nelemento: o item atual sendo processado\nindice (opcional): a posição do item no array\narrayOriginal (opcional): referência ao array original",
+    "author": 1,
+    "date": "2026-06-30T13:04:28.982Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 15,
+  "fields": {
+    "content": " CENA INUSITADA | Um homem levou um susto ao perceber uma grande quantidade de terra sendo expulsa de um buraco. Intrigado com a cena, resolveu se aproximar para descobrir o que estava acontecendo.\n\n rafaell.batatta (ig) | \n@myhoodbr",
+    "author": 1,
+    "date": "2026-06-30T13:18:55.024Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 16,
+  "fields": {
+    "content": "It was the same intensity as the Venezuela earthquake, and no homes collapsed.\n\nThe earthquake measured around magnitude 7.4–7, with its epicenter near the Sanriku coast (Iwate Prefecture), a highly active seismic zone along the “Pacific Ring of Fire.”",
+    "author": 1,
+    "date": "2026-06-30T13:22:19.134Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 17,
+  "fields": {
+    "content": "Because the movement of that earthquake in Japan was linear. The problem in Venezuela was the second earthquake that brought waves from another direction, causing a pendulum-like motion, as seen in videos of flowerpots. Very few constructions can withstand that type of combined earthquake.\n",
+    "author": 1,
+    "date": "2026-06-30T13:22:52.219Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 18,
+  "fields": {
+    "content": "Earthquakes release waves in all directions, and since they argue that, they expose that they really don't know anything about what they're trying to talk about.\n",
+    "author": 1,
+    "date": "2026-06-30T13:23:53.734Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 19,
+  "fields": {
+    "content": "Epic Games CEO Tim Sweeney says Steam is missing out on millions of PC players because it doesn’t have games like Fortnite, Riot Games titles, or Genshin Impact.\n\nSweeney said Valve has “a nice thing going on on PC,” but added that Steam is “missing out on a lot of opportunity” by not having those games available on the platform.\n\nSweeney also said Epic wants to work with Valve in the future, explaining, “We would love to interoperate with every company willing and to connect all the gamers.”",
+    "author": 1,
+    "date": "2026-06-30T13:24:15.932Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 20,
+  "fields": {
+    "content": "Former PlayStation boss Shawn Layden says he doesn’t think Sony should stop bringing PlayStation games to PC.\n\nLayden explained that the strategy was never just about making more money. \nHe said many PC players “weren’t going to buy the hardware anyway,” so releasing games on PC gave Sony a chance to reach people who were never going to buy a PlayStation console.\n\nHe also criticized people who say PC releases hurt PlayStation, saying:\n\n“I love how everyone online is a marketing/business analyst and darn near a part-time psychologist that understands the ins and outs of consumer spending and purchasing habits better than billion-dollar organizations.”\n",
+    "author": 1,
+    "date": "2026-06-30T13:27:24.035Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 21,
+  "fields": {
+    "content": "During a California Senate committee hearing on the Protect Our Games Act (AB 1921) the ESA lobbyist Jennifer Gibbons said that community-run Minecraft servers ARE ILLEGAL  under CURRENT, ALREADY EXISTING LAW\n\nThe comment came as the ESA opposed the bill, which aims to prevent games from becoming unplayable after publishers shut down official servers.\n",
+    "author": 1,
+    "date": "2026-06-30T13:29:30.148Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 22,
+  "fields": {
+    "content": "According to Variety, Netflix is developing a live-action TV series based on the Persona game franchise.\n\nThe series will be produced by 21 Laps, the studio behind Stranger Things. SEGA’s Toru Nakahara is also attached as an executive producer.\n\nLet's see how Netflix ruins this.",
+    "author": 1,
+    "date": "2026-06-30T13:30:10.070Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 23,
+  "fields": {
+    "content": "An Apple Watch Ultra was badly damaged after its owner crashed a motorcycle while trying to avoid a car, but the owner believes the watch protected the arm from a much worse injury.\n\nThe owner said, “My chunky titanium AWU took direct and full impact of my fall, which thankfully saved my arm from full contact to the pavement.”\n",
+    "author": 1,
+    "date": "2026-06-30T13:32:56.617Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 24,
+  "fields": {
+    "content": "These Apple Watches can be lifesavers. From being able to ping your phone when you lose it, fall detection if you take a nasty fall, or being able to detect erratic and irregular heart beats\n",
+    "author": 1,
+    "date": "2026-06-30T13:33:18.022Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 25,
+  "fields": {
+    "content": "The upcoming Metroidvania SHADE Protocol has already reached more than 150,000 Steam wishlists and 10,000 Steam followers. \n\nThe studio called the campaign “life-changing for our team.”\n\nThe Kickstarter campaign has raised over $275,000, far surpassing its original $40,000 funding goal.\n\n“We hit 150K+ wishlists, 10K followers on Steam, and surpassed $230K on Kickstarter all in the same day… and THEN Emi Evans, vocalist for NieR Automata and Dark Souls amongst many other games, shares that she’s a stretch goal for our game. Don’t wake me up please!”",
+    "author": 1,
+    "date": "2026-06-30T13:34:21.107Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 26,
+  "fields": {
+    "content": "George Broussard  says he has heard from an internal source that Xbox could close several studios and will be like “the meteor that took out the dinosaurs.”\n\nHe isn’t sharing the names but says the information came from someone inside the company.\n\nBroussard said that if the information is true, it could be the biggest round of layoffs the gaming industry has ever seen. He also claims that even the studios that stay open will face layoffs.\n\n“If it’s even close to true (and it’s from inside), this will likely be the largest single layoff event in gaming history.”\n\n“Xbox is going to be supremely unpopular for a very long time, and the devastation is going to reverberate like the meteor that took out the dinosaurs.”",
+    "author": 1,
+    "date": "2026-06-30T13:35:11.502Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 27,
+  "fields": {
+    "content": "George Broussard  says he has heard from an internal source that Xbox could close several studios and will be like “the meteor that took out the dinosaurs.”\n\nHe isn’t sharing the names but says the information came from someone inside the company.\n\nBroussard said that if the information is true, it could be the biggest round of layoffs the gaming industry has ever seen. He also claims that even the studios that stay open will face layoffs.\n\n“If it’s even close to true (and it’s from inside), this will likely be the largest single layoff event in gaming history.”\n\n“Xbox is going to be supremely unpopular for a very long time, and the devastation is going to reverberate like the meteor that took out the dinosaurs.”",
+    "author": 1,
+    "date": "2026-06-30T13:35:32.078Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 28,
+  "fields": {
+    "content": "MetaPCs has announced one of the first modern prebuilt gaming PCs that comes with SteamOS already installed instead of Windows.\n\nThe Steamroller includes:\n- AMD Ryzen 5 9600X\n- AMD Radeon RX 7600 (8GB)\n- 16GB DDR5 RAM\n- 1TB NVMe SSD\n- SteamOS pre-installed\n\nThe PC starts at $1,299 and uses standard desktop components, making it easy to upgrade in the future.",
+    "author": 1,
+    "date": "2026-06-30T13:36:35.889Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 29,
+  "fields": {
+    "content": "MetaPCs has announced one of the first modern prebuilt gaming PCs that comes with SteamOS already installed instead of Windows.\n\nThe Steamroller includes:\n- AMD Ryzen 5 9600X\n- AMD Radeon RX 7600 (8GB)\n- 16GB DDR5 RAM\n- 1TB NVMe SSD\n- SteamOS pre-installed\n\nThe PC starts at $1,299 and uses standard desktop components, making it easy to upgrade in the future.",
+    "author": 1,
+    "date": "2026-06-30T13:37:16.853Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 30,
+  "fields": {
+    "content": "dad asdas ",
+    "author": 1,
+    "date": "2026-06-30T13:38:01.544Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 31,
+  "fields": {
+    "content": "da asd s",
+    "author": 1,
+    "date": "2026-06-30T13:45:53.761Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 32,
+  "fields": {
+    "content": "eae",
+    "author": 1,
+    "date": "2026-06-30T13:47:03.208Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 33,
+  "fields": {
+    "content": "dasdas",
+    "author": 1,
+    "date": "2026-06-30T13:47:07.258Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 34,
+  "fields": {
+    "content": "teadasdq",
+    "author": 1,
+    "date": "2026-06-30T13:47:27.175Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 35,
+  "fields": {
+    "content": "daqeqw",
+    "author": 1,
+    "date": "2026-06-30T13:50:04.030Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 36,
+  "fields": {
+    "content": "da adsqw eqw ",
+    "author": 1,
+    "date": "2026-06-30T13:57:48.751Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 37,
+  "fields": {
+    "content": "qweqw131",
+    "author": 1,
+    "date": "2026-06-30T13:58:18.600Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 38,
+  "fields": {
+    "content": "dsadasdqwweq",
+    "author": 1,
+    "date": "2026-06-30T13:58:33.412Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 39,
+  "fields": {
+    "content": "sdqwe13",
+    "author": 1,
+    "date": "2026-06-30T13:58:44.011Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 40,
+  "fields": {
+    "content": "dq2eqeqw ",
+    "author": 1,
+    "date": "2026-06-30T14:00:30.498Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 41,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-06-30T14:00:40.819Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 42,
+  "fields": {
+    "content": "tesdaa 42134",
+    "author": 1,
+    "date": "2026-06-30T14:03:24.260Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 43,
+  "fields": {
+    "content": "novo post",
+    "author": 1,
+    "date": "2026-06-30T14:05:42.144Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 44,
+  "fields": {
+    "content": "trew ",
+    "author": 1,
+    "date": "2026-06-30T14:06:44.678Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 45,
+  "fields": {
+    "content": "eqweqw",
+    "author": 1,
+    "date": "2026-06-30T14:06:46.118Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 46,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-06-30T14:11:14.697Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 47,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-06-30T14:11:16.978Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 48,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-06-30T14:16:07.908Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 49,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-06-30T14:16:09.617Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 50,
+  "fields": {
+    "content": "1",
+    "author": 1,
+    "date": "2026-06-30T14:16:13.011Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 51,
+  "fields": {
+    "content": "1",
+    "author": 1,
+    "date": "2026-06-30T14:16:15.271Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 52,
+  "fields": {
+    "content": "2",
+    "author": 1,
+    "date": "2026-06-30T14:16:18.563Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 53,
+  "fields": {
+    "content": "2",
+    "author": 1,
+    "date": "2026-06-30T14:16:20.748Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 54,
+  "fields": {
+    "content": "3",
+    "author": 1,
+    "date": "2026-06-30T14:17:10.998Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 55,
+  "fields": {
+    "content": "e",
+    "author": 1,
+    "date": "2026-06-30T14:17:15.303Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 56,
+  "fields": {
+    "content": "1",
+    "author": 1,
+    "date": "2026-06-30T14:17:17.883Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 57,
+  "fields": {
+    "content": "123",
+    "author": 1,
+    "date": "2026-06-30T14:18:00.342Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 58,
+  "fields": {
+    "content": "dsa",
+    "author": 1,
+    "date": "2026-06-30T14:18:03.603Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 59,
+  "fields": {
+    "content": "daeqw",
+    "author": 1,
+    "date": "2026-06-30T14:18:18.154Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 60,
+  "fields": {
+    "content": "1312",
+    "author": 1,
+    "date": "2026-06-30T14:18:21.365Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 61,
+  "fields": {
+    "content": "dadsaq",
+    "author": 1,
+    "date": "2026-06-30T14:18:55.535Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 62,
+  "fields": {
+    "content": "q",
+    "author": 1,
+    "date": "2026-06-30T14:19:01.266Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 63,
+  "fields": {
+    "content": "q",
+    "author": 1,
+    "date": "2026-06-30T14:19:03.455Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 64,
+  "fields": {
+    "content": "q",
+    "author": 1,
+    "date": "2026-06-30T14:19:05.210Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 65,
+  "fields": {
+    "content": "Now, we’ll define the inputKeyPress function. In this function, we’ll first check whether the Enter key was pressed, and then check to see if the answer is correct. When the user is correct, we want to increase the score by 1, choose random numbers for the next problem, and clear the response. If the answer is incorrect, we want to decrease the score by 1 and clear the response.\n\n",
+    "author": 1,
+    "date": "2026-06-30T14:20:29.662Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 66,
+  "fields": {
+    "content": "Capcom has opened up about how difficult Pragmata’s early development really was,\nDirector Cho Yonghee said the team’s first playable versions received very harsh feedback from inside Capcom.\n\n“It was devastating,” “We were told that the game wasn’t interesting at all.”\n\nInstead of giving up, the team rebuilt big parts of the game.\n\nCho said, “Our failures guided us to success.”\n\nProducer Naoto Oyama added that the team kept improving the game through playtesting and feedback until they found the right balance between shooting, hacking, and exploration.",
+    "author": 1,
+    "date": "2026-06-30T14:24:33.978Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 67,
+  "fields": {
+    "content": "Capcom has opened up about how difficult Pragmata’s early development really was,\nDirector Cho Yonghee said the team’s first playable versions received very harsh feedback from inside Capcom.\n\n“It was devastating,” “We were told that the game wasn’t interesting at all.”\n\nInstead of giving up, the team rebuilt big parts of the game.\n\nCho said, “Our failures guided us to success.”\n\nProducer Naoto Oyama added that the team kept improving the game through playtesting and feedback until they found the right balance between shooting, hacking, and exploration.",
+    "author": 1,
+    "date": "2026-06-30T14:24:57.028Z",
+    "likes": []
+  }
+},
+{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
@@ -266,6 +816,14 @@
   "fields": {
     "session_data": "e30:1wceRw:Lmp_2_Sf1NL6cX7PTW2yurrDze1wPef_xTNGDgJuKGU",
     "expire_date": "2026-07-09T07:24:36.517Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qtin2u26ihg95zdj0nzmk9frwx1lzkmo",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1weTgr:WEca4152nSwVgM21nOjuSKTP_YMp59Nven7otGhhGAc",
+    "expire_date": "2026-07-14T08:19:33.812Z"
   }
 }
 ]
