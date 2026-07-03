@@ -24,10 +24,6 @@ def following(request):
     return JsonResponse({ 'data': 'Following (todo)' }, status=200)
 
 
-def profile(request):
-    return render(request, "network/layout.html")
-
-
 def login_view(request):
     if request.method == "POST":
 
@@ -104,7 +100,7 @@ def me(request):
     if request.user.is_authenticated:
         return JsonResponse({
             "id": request.user.id,
-            "username": request.user.username
+            "username": request.user.username,
         }, status=200)
     
     return JsonResponse({
@@ -112,7 +108,9 @@ def me(request):
     }, status=401)
 
 
-def all_posts(request):
-    posts = Post.objects.all().order_by('-date')
-    return JsonResponse([post.serialize() for post in posts], safe=False)
+def posts(request, user_id = None):
+
+    posts = Post.objects.all() if not user_id else Post.objects.filter(author=user_id)
+    posts = posts.order_by('-date')
     
+    return JsonResponse([post.serialize() for post in posts], safe=False)

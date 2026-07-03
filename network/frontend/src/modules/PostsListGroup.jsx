@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 
 function PostsListGroup ({refreshTrigger}) {
 
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('/api/all-posts/')
+        fetch('/api/posts/')
         .then(response => response.json())
         .then(content => setPosts(content))
     }, [refreshTrigger])
