@@ -108,6 +108,18 @@ def me(request):
     }, status=401)
 
 
+@login_required
+def user_info(request, username):
+
+    user = User.objects.get(username=username)
+
+    return JsonResponse({
+        'username': user.username,
+        'followers': user.followers.count(),
+        'following': user.following.count()
+    })
+
+
 def posts(request, user_id = None):
 
     posts = Post.objects.all() if not user_id else Post.objects.filter(author=user_id)

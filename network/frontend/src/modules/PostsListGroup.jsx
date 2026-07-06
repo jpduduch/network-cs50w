@@ -1,15 +1,16 @@
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 
-function PostsListGroup ({refreshTrigger}) {
+function PostsListGroup ({refreshTrigger, user}) {
 
     const [posts, setPosts] = useState([])
+    const fetchAddr = user === undefined ? '/api/posts/' : `/api/posts/user/${user.id}`
 
     useEffect(() => {
-        fetch('/api/posts/')
+        fetch(fetchAddr)
         .then(response => response.json())
         .then(content => setPosts(content))
-    }, [refreshTrigger])
+    }, [refreshTrigger, fetchAddr])
 
     return (
         <ul className="d-flex flex-column gap-2 p-0">

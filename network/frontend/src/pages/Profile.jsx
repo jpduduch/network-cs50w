@@ -4,9 +4,6 @@ import PostsListGroup from "../modules/PostsListGroup";
 
 function Profile({ user }) {
 
-    console.log(user.id)
-    console.log(user.following)
-
     return(
         <main className="d-flex gap-4 flex-column">
             <h3>{user.username}</h3>
@@ -17,6 +14,7 @@ function Profile({ user }) {
             <Button hierarchy="secondary" label="Follow" />
             <hr />
             <h6>Posts</h6>
+            <PostsListGroup user={ user } /> 
         </main>
     )
 }
