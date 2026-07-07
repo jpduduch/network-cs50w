@@ -6,7 +6,7 @@ function PostsListGroup ({ postsArray }) {
     return (
         <ul className="d-flex flex-column gap-2 p-0">
             {postsArray?.map(post => (
-                <Post content={post.content} creator={post.author} timestamp={post.date} likes={post.likes} />
+                <Post content={post.content} creator={post.author} timestamp={post.date} likes={post.likes} id={post.id} />
             ))}
         </ul>
     )

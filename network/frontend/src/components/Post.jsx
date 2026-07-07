@@ -1,16 +1,17 @@
+import apiPOST from '../utils/apiPOST';
 import Button from './Button'
 import LikeButton from './custom/LikeButton'
 import Icon from './icon/Icon'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Post({ content, creator, timestamp, likes }) {
+function Post({ content, creator, timestamp, likes, id }) {
     // each post should include the username of the poster, the post content itself, the date and time at which the post was made, and the number of “likes” the post has (this will be 0 for all posts until you implement the ability to “like” a post later).
 
     const [like, setLike] = useState(false);
 
     function handleLike() {
-        like ? setLike(false) : setLike(true);
+        apiPOST(`/api/posts/${id}/like/`, )
     }
 
     return(
@@ -23,7 +24,7 @@ function Post({ content, creator, timestamp, likes }) {
                     </div>
                     <p class="mb-1">{content}</p>
                 </div>
-                <LikeButton label={likes} hasLike={like} onClick={handleLike} />
+                <LikeButton label={likes} hasLike={like} onClick={ handleLike } />
             </div>
         </div>
     )

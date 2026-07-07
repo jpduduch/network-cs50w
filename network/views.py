@@ -96,6 +96,14 @@ def send_post(request):
     return JsonResponse({"message": "Post sent successfully."}, status=201)
 
 
+@login_required(login_url="/login/")
+@require_POST
+def toggle_like(request, post_id):
+
+    data = json.loads(request.body)
+    post = Post.objects.get(pk=post_id)
+
+
 def me(request):
     if request.user.is_authenticated:
         return JsonResponse({
