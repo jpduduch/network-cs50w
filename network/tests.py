@@ -144,11 +144,11 @@ class ViewPostTests(TestCase):
             )
 
         self.assertEqual(post_amount, Post.objects.all().count() - posts_initial_amount)
-        api_response = self.client.get('/api/all-posts/')
+        api_response = self.client.get('/api/posts/')
         self.assertEqual(len(api_response.json()), post_amount + posts_initial_amount)
 
     def test_api_returns_correct_field_types(self):
-        first_post = self.client.get('/api/all-posts/').json()[0]
+        first_post = self.client.get('/api/posts/').json()[0]
         self.assertIsInstance(first_post["content"], str)
         self.assertIsInstance(first_post["author"], str)
         self.assertIsInstance(first_post["likes"], int)
