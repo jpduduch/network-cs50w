@@ -1,23 +1,35 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Button from "../components/Button";
 import PostsListGroup from "../modules/PostsListGroup";
 
-function Profile({ username }) {
+function Profile() {
+
+    const { username } = useParams();
+    const [userInfo, setUserInfo] = useState({});
 
     // fetch requested profile info
-    // fetch posts from requested profile
+    useEffect(() => {
+        fetch(`/api/users/${username}`)
+        .then(response => response.json())
+        .then(body => {
+            setUserInfo(body);
+        })
+    }, [])
 
     return(
         <main className="d-flex gap-4 flex-column">
-            <h3>{user.username}</h3>
+            <h3>{userInfo.username}</h3>
             <div className="d-flex gap-4">
-                <span><span className="fw-bold">{user.followers}</span> <span className="text-body-secondary">followers</span></span> 
-                <span><span className="fw-bold">{user.following}</span> <span className="text-body-secondary">following</span></span>
+                <span><span className="fw-bold">{userInfo.followers}</span> <span className="text-body-secondary">followers</span></span> 
+                <span><span className="fw-bold">{userInfo.following}</span> <span className="text-body-secondary">following</span></span>
             </div>
             <Button hierarchy="secondary" label="Follow" />
             <hr />
             <h6>Posts</h6>
-            <PostsListGroup postsArray={ user } /> 
+            
+            <PostsListGroup postsArray={ userInfo.posts } />
+
         </main>
     )
 }

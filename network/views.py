@@ -12,7 +12,7 @@ from django.views.decorators.http import require_POST
 
 from .models import User, Post
 
-def layout(request):
+def layout(request, username = None):
     
     # place CSRF token into request variable sent to client
     get_token(request)
@@ -96,7 +96,6 @@ def send_post(request):
     return JsonResponse({"message": "Post sent successfully."}, status=201)
 
 
-# Return logged user id and username
 def me(request):
     if request.user.is_authenticated:
         return JsonResponse({
@@ -108,12 +107,12 @@ def me(request):
         "error": "Not authenticated."
     }, status=401)
 
-# Requires username. Returns username info and posts.
+
 @login_required
 def user_info(request, username):
 
     user = User.objects.get(username=username)
-    posts = Post.objects.filter(author=user)
+    posts = _get_posts_queryset(user)
 
     return JsonResponse({
         'username': user.username,
@@ -124,6 +123,11 @@ def user_info(request, username):
 
 
 def posts(request):
-
-    posts = Post.objects.all().order_by('-date')
+    posts = _get_posts_queryset()
     return JsonResponse([post.serialize() for post in posts], safe=False)
+
+
+# utils
+def _get_posts_queryset(author=None):
+    qs = Post.objects.all() if author is None else Post.objects.filter(author=author)
+    return qs.order_by('-date')

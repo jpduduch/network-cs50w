@@ -23,7 +23,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Wioxs4922kzwnFlQOV5S28$wg085ublEK9NWfFnKujabQOww2Z8GC80DKUYw38X858=",
-    "last_login": "2026-06-24T09:12:24.276Z",
+    "last_login": "2026-07-07T11:28:08.134Z",
     "is_superuser": false,
     "username": "ron",
     "first_name": "",
@@ -887,6 +887,36 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 84,
+  "fields": {
+    "content": "eqwe23424",
+    "author": 1,
+    "date": "2026-07-07T10:58:07.179Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 85,
+  "fields": {
+    "content": "Python is the language of the aristocratic, the delegation class. We leave the static typing and manual memory management to the peasants.",
+    "author": 2,
+    "date": "2026-07-07T11:28:11.524Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 86,
+  "fields": {
+    "content": "isso aqui vai martelar minha cabeça pelos próximos 4 anos até uma eliminação igualmente bizarra pra Noruega na Copa de 2026",
+    "author": 2,
+    "date": "2026-07-07T11:53:20.309Z",
+    "likes": []
+  }
+},
+{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
@@ -936,14 +966,6 @@
     "object_repr": "Post object (1)",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Likes\"]}}]"
-  }
-},
-{
-  "model": "sessions.session",
-  "pk": "0v2oxt7wmleyungxm2juwwzk9xesfdah",
-  "fields": {
-    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wh264:GLfW76UZhFtZXH8ZJOsxd08hXfZkFY_QG_1bmk92vyc",
-    "expire_date": "2026-07-21T09:28:08.664Z"
   }
 },
 {
