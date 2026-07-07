@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import PostsListGroup from "../modules/PostsListGroup";
 
-function Profile({ user }) {
+function Profile({ username }) {
+
+    // fetch requested profile info
+    // fetch posts from requested profile
 
     return(
         <main className="d-flex gap-4 flex-column">
@@ -14,7 +17,7 @@ function Profile({ user }) {
             <Button hierarchy="secondary" label="Follow" />
             <hr />
             <h6>Posts</h6>
-            <PostsListGroup user={ user } /> 
+            <PostsListGroup postsArray={ user } /> 
         </main>
     )
 }

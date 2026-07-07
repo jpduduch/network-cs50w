@@ -6,22 +6,13 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-    const [currentUser, setCurrentUser] = useState({});
-
-    useEffect(() => {
-        fetch('/api/me/')
-        // if not authenticated or failed request, return null
-        .then(response => response.ok ? response.json() : null)
-        .then(user => setCurrentUser(user))
-    }, [])
-
     return (
         <BrowserRouter>
             <div className='container py-5 row d-flex justify-content-center' id="main">
                 <Routes>
-                    <Route path="/" element={ <AllPosts user={ currentUser } /> } />
+                    <Route path="/" element={ <AllPosts /> } />
                     <Route path="/following/" element={ <Following /> } />
-                    <Route path="/profile/" element={ <Profile user={ currentUser } /> } />
+                    <Route path="/user/:username" element={ <Profile /> } />
                 </Routes>
             </div>
         </BrowserRouter>

@@ -1,20 +1,11 @@
 import Post from "../components/Post";
 import { useEffect, useState } from "react";
 
-function PostsListGroup ({refreshTrigger, user}) {
-
-    const [posts, setPosts] = useState([])
-    const fetchAddr = user === undefined ? '/api/posts/' : `/api/posts/user/${user.id}`
-
-    useEffect(() => {
-        fetch(fetchAddr)
-        .then(response => response.json())
-        .then(content => setPosts(content))
-    }, [refreshTrigger, fetchAddr])
+function PostsListGroup ({ postsArray }) {
 
     return (
         <ul className="d-flex flex-column gap-2 p-0">
-            {posts.map(post => (
+            {postsArray.map(post => (
                 <Post content={post.content} creator={post.author} timestamp={post.date} likes={post.likes} />
             ))}
         </ul>

@@ -96,6 +96,7 @@ def send_post(request):
     return JsonResponse({"message": "Post sent successfully."}, status=201)
 
 
+# Return logged user id and username
 def me(request):
     if request.user.is_authenticated:
         return JsonResponse({
@@ -107,22 +108,22 @@ def me(request):
         "error": "Not authenticated."
     }, status=401)
 
-
+# Requires username. Returns username info and posts.
 @login_required
 def user_info(request, username):
 
     user = User.objects.get(username=username)
+    posts = Post.objects.filter(author=user)
 
     return JsonResponse({
         'username': user.username,
         'followers': user.followers.count(),
-        'following': user.following.count()
-    })
+        'following': user.following.count(),
+        'posts': [post.serialize() for post in posts]
+    }, safe=False)
 
 
-def posts(request, user_id = None):
+def posts(request):
 
-    posts = Post.objects.all() if not user_id else Post.objects.filter(author=user_id)
-    posts = posts.order_by('-date')
-    
+    posts = Post.objects.all().order_by('-date')
     return JsonResponse([post.serialize() for post in posts], safe=False)

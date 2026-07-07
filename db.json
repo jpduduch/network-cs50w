@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-06-24T09:12:05.548Z",
+    "last_login": "2026-07-07T09:28:08.663Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -727,6 +727,166 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 68,
+  "fields": {
+    "content": "The PlayStation post about the end of physical media has been Community Noted.\n\nIt has also received nearly 70,000 replies, with people extremely mad about it. This could be one of the Playstationbiggest backlash in recent years.\n\nPlayStation has also stopped posting since announcing the change.\n\n“Digital purchases grant a revocable license to access content, not ownership. Sony recently removed hundreds of purchased StudioCanal movies from libraries due to licensing.”\n",
+    "author": 2,
+    "date": "2026-07-03T12:47:06.030Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 69,
+  "fields": {
+    "content": "tyradqwe234 ",
+    "author": 1,
+    "date": "2026-07-06T13:07:14.504Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 70,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-07-07T09:16:43.727Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 71,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-07-07T09:20:34.830Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 72,
+  "fields": {
+    "content": "132131",
+    "author": 1,
+    "date": "2026-07-07T09:20:37.547Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 73,
+  "fields": {
+    "content": "13123123",
+    "author": 1,
+    "date": "2026-07-07T09:20:40.798Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 74,
+  "fields": {
+    "content": "256456",
+    "author": 1,
+    "date": "2026-07-07T09:20:44.834Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 75,
+  "fields": {
+    "content": "134423 42",
+    "author": 1,
+    "date": "2026-07-07T09:20:58.576Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 76,
+  "fields": {
+    "content": "`2`22`1",
+    "author": 1,
+    "date": "2026-07-07T09:21:02.572Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 77,
+  "fields": {
+    "content": "23432423",
+    "author": 1,
+    "date": "2026-07-07T09:21:13.577Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 78,
+  "fields": {
+    "content": "42342",
+    "author": 1,
+    "date": "2026-07-07T09:26:17.600Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 79,
+  "fields": {
+    "content": "3234",
+    "author": 1,
+    "date": "2026-07-07T09:26:51.977Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 80,
+  "fields": {
+    "content": "ffgg",
+    "author": 1,
+    "date": "2026-07-07T09:26:55.968Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 81,
+  "fields": {
+    "content": "11dd",
+    "author": 1,
+    "date": "2026-07-07T09:26:58.562Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 82,
+  "fields": {
+    "content": "fsdgdgs",
+    "author": 1,
+    "date": "2026-07-07T09:27:15.691Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 83,
+  "fields": {
+    "content": "t2434 353535q",
+    "author": 1,
+    "date": "2026-07-07T09:34:59.076Z",
+    "likes": []
+  }
+},
+{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
@@ -780,6 +940,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "0v2oxt7wmleyungxm2juwwzk9xesfdah",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wh264:GLfW76UZhFtZXH8ZJOsxd08hXfZkFY_QG_1bmk92vyc",
+    "expire_date": "2026-07-21T09:28:08.664Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "2u0ms9ppgcdb0k4vkuopbljgo5wb5j3i",
   "fields": {
     "session_data": ".eJxVjDsOwjAQRO_iGlm7jj-Bkp4zWLv-4ABypDipEHfHkVJANZp5M_MWnra1-K2lxU9RXMQgTr8ZU3imuoP4oHqfZZjrukws94o8aJO3OabX9ej-HRRqpa-tjhl56KKRnAmgELMaIWcwyQGaM8PoomXU3QTNlgls99ayckmLzxfHZTco:1wclaC:YycPOhuPCQ55ETyCa8txyab2JKjdhBVDkc_YuHzLqwM",
@@ -804,6 +972,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "7suvk7z9469euxf87or93luo1f7wtdfl",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wgj2H:b8DoInYfk50LIlb8LxnrQmU8P1skdBMyXpsqmNBFW34",
+    "expire_date": "2026-07-20T13:06:57.725Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "ggf24nv6m9i8p61owcggbynkiz7u2u4p",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wdq4T:NPOBSj7dlBg_aJdklS2I6_globKO1tbWJfMKwZtX1_U",
@@ -816,6 +992,14 @@
   "fields": {
     "session_data": "e30:1wceRw:Lmp_2_Sf1NL6cX7PTW2yurrDze1wPef_xTNGDgJuKGU",
     "expire_date": "2026-07-09T07:24:36.517Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "o2ikj43anyfcmgpe41o8bxn48r5cvcio",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wfdIf:agAlxL7btmtN2zDitGUBF9ESVcemoEUpGQV9F7ELKP4",
+    "expire_date": "2026-07-17T12:47:21.062Z"
   }
 },
 {

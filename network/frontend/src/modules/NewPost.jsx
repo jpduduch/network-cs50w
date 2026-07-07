@@ -23,8 +23,8 @@ function NewPost({ onUpdate }) {
                 setMessage(feedback.error.content);
             } else {
                 setMessage(feedback.message);
-                onUpdate();
                 setContent("");
+                onUpdate();
             }
         })
     }
