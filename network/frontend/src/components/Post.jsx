@@ -5,14 +5,8 @@ import Icon from './icon/Icon'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Post({ content, creator, timestamp, likes, id }) {
+function Post({ content, creator, timestamp, likes, id, hasLike }) {
     // each post should include the username of the poster, the post content itself, the date and time at which the post was made, and the number of “likes” the post has (this will be 0 for all posts until you implement the ability to “like” a post later).
-
-    const [like, setLike] = useState(false);
-
-    function handleLike() {
-        apiPOST(`/api/posts/${id}/like/`, )
-    }
 
     return(
         <div className="d-flex flex-column gap-2">
@@ -24,7 +18,7 @@ function Post({ content, creator, timestamp, likes, id }) {
                     </div>
                     <p class="mb-1">{content}</p>
                 </div>
-                <LikeButton label={likes} hasLike={like} onClick={ handleLike } />
+                <LikeButton likeCount={likes} hasLike={hasLike} />
             </div>
         </div>
     )

@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-07T09:28:08.663Z",
+    "last_login": "2026-07-08T14:36:55.382Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -1014,6 +1014,14 @@
   "fields": {
     "session_data": "e30:1wceRw:Lmp_2_Sf1NL6cX7PTW2yurrDze1wPef_xTNGDgJuKGU",
     "expire_date": "2026-07-09T07:24:36.517Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "mxumct14gf3h6ue37ai3mmyeav3tjs3m",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1whTOR:_YdFcOMF2qT5v8d_cvz9DDu8rNCSVmVbyhztCq6p4-Q",
+    "expire_date": "2026-07-22T14:36:55.383Z"
   }
 },
 {

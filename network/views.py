@@ -117,22 +117,24 @@ def me(request):
 
 
 @login_required
-def user_info(request, username):
+def profile_info(request, username):
 
-    user = User.objects.get(username=username)
-    posts = _get_posts_queryset(user)
+    profile = User.objects.get(username=username)
+    posts = _get_posts_queryset(profile)
 
     return JsonResponse({
-        'username': user.username,
-        'followers': user.followers.count(),
-        'following': user.following.count(),
-        'posts': [post.serialize() for post in posts]
+        'username': profile.username,
+        'followers': profile.followers.count(),
+        'following': profile.following.count(),
+        'posts': [post.serialize(viewer=request.user) for post in posts]
     }, safe=False)
 
 
 def posts(request):
+
+    user = request.user if request.user.is_authenticated else None
     posts = _get_posts_queryset()
-    return JsonResponse([post.serialize() for post in posts], safe=False)
+    return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
 
 
 # utils
