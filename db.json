@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-08T14:36:55.382Z",
+    "last_login": "2026-07-10T13:28:13.027Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -23,7 +23,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Wioxs4922kzwnFlQOV5S28$wg085ublEK9NWfFnKujabQOww2Z8GC80DKUYw38X858=",
-    "last_login": "2026-07-07T11:28:08.134Z",
+    "last_login": "2026-07-10T12:31:22.498Z",
     "is_superuser": false,
     "username": "ron",
     "first_name": "",
@@ -1002,6 +1002,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "8m4worftbsy8byrte9211dsf4pp94cui",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEMlEdduvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3TgQ2FGYINBqTtQUEz9mXomggp8bC6JLSbHTybAMwEpB32QYVkhnE-wP-HThY:1wiAO2:Ag2gqZNOm9Gpc4wewotMgWVk8SAy9b7iXlqCR4BAzUQ",
+    "expire_date": "2026-07-24T12:31:22.499Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "ggf24nv6m9i8p61owcggbynkiz7u2u4p",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wdq4T:NPOBSj7dlBg_aJdklS2I6_globKO1tbWJfMKwZtX1_U",
@@ -1038,6 +1046,14 @@
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1weTgr:WEca4152nSwVgM21nOjuSKTP_YMp59Nven7otGhhGAc",
     "expire_date": "2026-07-14T08:19:33.812Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "uec7nvz13hubdddu6kc8z3bysjkug83z",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wiBH3:UZ_I_mEEbV8up52NJyNPinKtd3IkdMiY9xPeaasWAXg",
+    "expire_date": "2026-07-24T13:28:13.028Z"
   }
 }
 ]

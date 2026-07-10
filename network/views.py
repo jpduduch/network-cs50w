@@ -99,9 +99,22 @@ def send_post(request):
 @login_required(login_url="/login/")
 @require_POST
 def toggle_like(request, post_id):
-
+    
     data = json.loads(request.body)
     post = Post.objects.get(pk=post_id)
+    user = request.user
+    like = data["hasLike"]
+
+    print(like)
+
+    if post.has_like(user):
+        response = "Like from user"
+    else:
+        response = "Has no like from user"
+
+    return JsonResponse({
+        'response': response
+    })
 
 
 def me(request):

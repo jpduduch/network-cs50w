@@ -5,8 +5,12 @@ import Icon from './icon/Icon'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Post({ content, creator, timestamp, likes, id, hasLike }) {
+function Post({ content, creator, timestamp, likes, postID, hasLike }) {
     // each post should include the username of the poster, the post content itself, the date and time at which the post was made, and the number of “likes” the post has (this will be 0 for all posts until you implement the ability to “like” a post later).
+
+    function toggleLike( {user, postID, hasLike }) {
+        
+    }
 
     return(
         <div className="d-flex flex-column gap-2">
@@ -18,7 +22,7 @@ function Post({ content, creator, timestamp, likes, id, hasLike }) {
                     </div>
                     <p class="mb-1">{content}</p>
                 </div>
-                <LikeButton likeCount={likes} hasLike={hasLike} />
+                <LikeButton likeCount={likes} hasLike={hasLike} onClick={ toggleLike } />
             </div>
         </div>
     )

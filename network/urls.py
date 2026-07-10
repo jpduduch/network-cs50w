@@ -17,4 +17,5 @@ urlpatterns = [
     path("api/send-post/", views.send_post, name="send_post"),
     path("api/users/me/", views.me, name="me"),
     path("api/users/<str:username>/", views.profile_info, name="profile_info"),
+    path("api/posts/<int:post_id>/set-like/", views.toggle_like, name="toggle_like"),
 ]
