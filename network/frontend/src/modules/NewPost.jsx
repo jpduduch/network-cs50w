@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import TextArea from '../components/TextArea';
 import getCSRFToken from '../utils/csrf';
+import apiFetch from '../utils/apiFetch';
 
 function NewPost({ onUpdate }) {
 
@@ -9,14 +10,7 @@ function NewPost({ onUpdate }) {
     const [message, setMessage] = useState([]);
 
     function handleSubmit() {
-        fetch('/api/send-post/', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": getCSRFToken()
-            },
-            body: JSON.stringify({ content })
-        })
+        apiFetch('/api/send-post/', 'POST', { content })
         .then(response => response.json())
         .then(feedback => {
             if ("error" in feedback) {

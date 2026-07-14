@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_http_methods, require_POST
 
 
 from .models import User, Post
@@ -96,6 +96,26 @@ def send_post(request):
     return JsonResponse({"message": "Post sent successfully."}, status=201)
 
 
+@login_required(login_url="/login/")
+@require_http_methods(["POST", "DELETE"])
+def toggle_like(request, post_id):
+    
+    post = get_object_or_404(Post, pk=post_id)
+    user = request.user
+    post.likes.add(user) if request.method == 'POST' else post.likes.remove(user)
+
+    try:
+        post.full_clean()
+        post.save()
+
+    except ValidationError as e:
+        return JsonResponse({"error": e.message_dict}, status=400)
+
+    return JsonResponse({
+        'response': "ok"
+    }, status=201)
+
+
 def me(request):
     if request.user.is_authenticated:
         return JsonResponse({
@@ -108,23 +128,24 @@ def me(request):
     }, status=401)
 
 
-@login_required
-def user_info(request, username):
+def profile_info(request, username):
 
-    user = User.objects.get(username=username)
-    posts = _get_posts_queryset(user)
+    profile = get_object_or_404(User, username=username)
+    posts = _get_posts_queryset(profile)
 
     return JsonResponse({
-        'username': user.username,
-        'followers': user.followers.count(),
-        'following': user.following.count(),
-        'posts': [post.serialize() for post in posts]
+        'username': profile.username,
+        'followers': profile.followers.count(),
+        'following': profile.following.count(),
+        'posts': [post.serialize(viewer=request.user) for post in posts]
     }, safe=False)
 
 
 def posts(request):
+
+    user = request.user if request.user.is_authenticated else None
     posts = _get_posts_queryset()
-    return JsonResponse([post.serialize() for post in posts], safe=False)
+    return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
 
 
 # utils

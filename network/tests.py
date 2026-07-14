@@ -155,3 +155,43 @@ class ViewPostTests(TestCase):
 
         # Ensure date is in readable format:
         datetime.strptime(first_post["date"], "%b %d %Y, %I:%M %p")
+
+
+class LikeViewAuthenticationTests(TestCase):
+    def setUp(self):
+        self.author = User.objects.create_user(username="autor", password="senha123")
+        self.post = Post.objects.create(author=self.author, content="Post de teste")
+        self.like_url = f"/api/posts/{self.post.id}/set-like/"
+
+    def test_anonymous_user_cannot_like_post(self):
+        response = self.client.post(self.like_url)
+
+        # @login_required redireciona quem não está autenticado (302),
+        # não chega a executar a lógica da view
+        self.assertEqual(response.status_code, 302)
+
+        # Garantia real: a curtida não pode ter sido registrada no banco
+        self.assertEqual(self.post.likes.count(), 0)
+
+    def test_anonymous_user_cannot_unlike_post(self):
+        # Post já curtido por outro usuário, para garantir que nada é desfeito
+        other_user = User.objects.create_user(username="outro", password="senha123")
+        self.post.likes.add(other_user)
+
+        response = self.client.delete(self.like_url)
+
+        self.assertEqual(response.status_code, 302)
+
+        # A curtida existente precisa permanecer intacta
+        self.assertIn(other_user, self.post.likes.all())
+        self.assertEqual(self.post.likes.count(), 1)
+
+    def test_authenticated_user_can_like_post(self):
+        # Teste de sanidade: garante que o par de testes acima não está
+        # passando "por acidente" (ex: endpoint quebrado pra todo mundo)
+        self.client.login(username="autor", password="senha123")
+
+        response = self.client.post(self.like_url)
+
+        self.assertEqual(response.status_code, 201)
+        self.assertIn(self.author, self.post.likes.all())
