@@ -1,8 +1,8 @@
 import getCSRFToken from "./csrf";
 
-function apiPOST(url, body) {
+function apiFetch(url, method = "GET", body = null) {
     return fetch(url, {
-        method: 'POST',
+        method: method,
         headers: {
             "Content-Type": "application/json",
             "X-CSRFToken": getCSRFToken()
@@ -11,4 +11,4 @@ function apiPOST(url, body) {
     })
 }
 
-export default apiPOST
+export default apiFetch

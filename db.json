@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-10T13:28:13.027Z",
+    "last_login": "2026-07-14T13:21:35.091Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -23,7 +23,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Wioxs4922kzwnFlQOV5S28$wg085ublEK9NWfFnKujabQOww2Z8GC80DKUYw38X858=",
-    "last_login": "2026-07-10T12:31:22.498Z",
+    "last_login": "2026-07-14T13:16:40.682Z",
     "is_superuser": false,
     "username": "ron",
     "first_name": "",
@@ -733,7 +733,9 @@
     "content": "The PlayStation post about the end of physical media has been Community Noted.\n\nIt has also received nearly 70,000 replies, with people extremely mad about it. This could be one of the Playstationbiggest backlash in recent years.\n\nPlayStation has also stopped posting since announcing the change.\n\n“Digital purchases grant a revocable license to access content, not ownership. Sony recently removed hundreds of purchased StudioCanal movies from libraries due to licensing.”\n",
     "author": 2,
     "date": "2026-07-03T12:47:06.030Z",
-    "likes": []
+    "likes": [
+      2
+    ]
   }
 },
 {
@@ -813,7 +815,9 @@
     "content": "`2`22`1",
     "author": 1,
     "date": "2026-07-07T09:21:02.572Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -853,7 +857,9 @@
     "content": "ffgg",
     "author": 1,
     "date": "2026-07-07T09:26:55.968Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -863,7 +869,9 @@
     "content": "11dd",
     "author": 1,
     "date": "2026-07-07T09:26:58.562Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -883,7 +891,10 @@
     "content": "t2434 353535q",
     "author": 1,
     "date": "2026-07-07T09:34:59.076Z",
-    "likes": []
+    "likes": [
+      1,
+      2
+    ]
   }
 },
 {
@@ -893,7 +904,9 @@
     "content": "eqwe23424",
     "author": 1,
     "date": "2026-07-07T10:58:07.179Z",
-    "likes": []
+    "likes": [
+      2
+    ]
   }
 },
 {
@@ -903,7 +916,10 @@
     "content": "Python is the language of the aristocratic, the delegation class. We leave the static typing and manual memory management to the peasants.",
     "author": 2,
     "date": "2026-07-07T11:28:11.524Z",
-    "likes": []
+    "likes": [
+      1,
+      2
+    ]
   }
 },
 {
@@ -913,6 +929,128 @@
     "content": "isso aqui vai martelar minha cabeça pelos próximos 4 anos até uma eliminação igualmente bizarra pra Noruega na Copa de 2026",
     "author": 2,
     "date": "2026-07-07T11:53:20.309Z",
+    "likes": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 87,
+  "fields": {
+    "content": "teasda asd\n",
+    "author": 2,
+    "date": "2026-07-14T12:16:17.993Z",
+    "likes": [
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 88,
+  "fields": {
+    "content": "e4234 2",
+    "author": 2,
+    "date": "2026-07-14T12:16:27.127Z",
+    "likes": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 89,
+  "fields": {
+    "content": "342342",
+    "author": 2,
+    "date": "2026-07-14T12:17:36.667Z",
+    "likes": [
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 90,
+  "fields": {
+    "content": "242342131",
+    "author": 2,
+    "date": "2026-07-14T12:17:46.687Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 91,
+  "fields": {
+    "content": "234236325",
+    "author": 2,
+    "date": "2026-07-14T12:21:52.225Z",
+    "likes": [
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 92,
+  "fields": {
+    "content": "cs sf sew",
+    "author": 2,
+    "date": "2026-07-14T12:22:00.025Z",
+    "likes": [
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 93,
+  "fields": {
+    "content": "1234234 2adsdf",
+    "author": 2,
+    "date": "2026-07-14T12:22:40.386Z",
+    "likes": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 94,
+  "fields": {
+    "content": "asd sdc s",
+    "author": 2,
+    "date": "2026-07-14T12:22:44.785Z",
+    "likes": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 95,
+  "fields": {
+    "content": "23423",
+    "author": 1,
+    "date": "2026-07-14T13:09:21.093Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 96,
+  "fields": {
+    "content": "er2423",
+    "author": 1,
+    "date": "2026-07-14T13:24:34.588Z",
     "likes": []
   }
 },
@@ -1006,6 +1144,14 @@
   "fields": {
     "session_data": ".eJxVjMsOwiAQRf-FtSEMlEdduvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3TgQ2FGYINBqTtQUEz9mXomggp8bC6JLSbHTybAMwEpB32QYVkhnE-wP-HThY:1wiAO2:Ag2gqZNOm9Gpc4wewotMgWVk8SAy9b7iXlqCR4BAzUQ",
     "expire_date": "2026-07-24T12:31:22.499Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "f5ols600rs59227x68f9dveq2mrjp8fv",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wjd4p:8vtcwjJ8iHCz8YwnPz2PcRDd3u4TGrAFAMAcIYR16Ok",
+    "expire_date": "2026-07-28T13:21:35.092Z"
   }
 },
 {

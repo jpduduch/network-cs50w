@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Button from "../components/Button";
 import PostsListGroup from "../modules/PostsListGroup";
 
-function Profile() {
+function Profile({user}) {
 
     const { username } = useParams();
     const [userInfo, setUserInfo] = useState({});
@@ -28,7 +28,7 @@ function Profile() {
             <hr />
             <h6>Posts</h6>
             
-            <PostsListGroup postsArray={ userInfo.posts } />
+            <PostsListGroup postsArray={ userInfo.posts } user={user} />
 
         </main>
     )

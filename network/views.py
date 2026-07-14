@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_http_methods, require_POST
 
 
 from .models import User, Post
@@ -97,24 +97,23 @@ def send_post(request):
 
 
 @login_required(login_url="/login/")
-@require_POST
+@require_http_methods(["POST", "DELETE"])
 def toggle_like(request, post_id):
     
-    data = json.loads(request.body)
-    post = Post.objects.get(pk=post_id)
+    post = get_object_or_404(Post, pk=post_id)
     user = request.user
-    like = data["hasLike"]
+    post.likes.add(user) if request.method == 'POST' else post.likes.remove(user)
 
-    print(like)
+    try:
+        post.full_clean()
+        post.save()
 
-    if post.has_like(user):
-        response = "Like from user"
-    else:
-        response = "Has no like from user"
+    except ValidationError as e:
+        return JsonResponse({"error": e.message_dict}, status=400)
 
     return JsonResponse({
-        'response': response
-    })
+        'response': "ok"
+    }, status=201)
 
 
 def me(request):
@@ -129,10 +128,9 @@ def me(request):
     }, status=401)
 
 
-@login_required
 def profile_info(request, username):
 
-    profile = User.objects.get(username=username)
+    profile = get_object_or_404(User, username=username)
     posts = _get_posts_queryset(profile)
 
     return JsonResponse({
