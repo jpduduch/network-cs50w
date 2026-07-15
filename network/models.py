@@ -6,6 +6,9 @@ class User(AbstractUser):
     # o parâmetro symmetrical false significa que, ao adicionar entrada em A, não adiciona a relação oposta 
     following = models.ManyToManyField('self', related_name='followers', blank=True, symmetrical=False)
 
+    def is_following(self, viewer):
+        return self.followers.filter(pk=viewer.pk).exists() if viewer else False
+
 
 class Post(models.Model):
     content = models.TextField()

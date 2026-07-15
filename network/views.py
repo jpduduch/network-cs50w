@@ -104,16 +104,25 @@ def toggle_like(request, post_id):
     user = request.user
     post.likes.add(user) if request.method == 'POST' else post.likes.remove(user)
 
-    try:
-        post.full_clean()
-        post.save()
-
-    except ValidationError as e:
-        return JsonResponse({"error": e.message_dict}, status=400)
-
     return JsonResponse({
         'response': "ok"
     }, status=201)
+
+
+@login_required(login_url="/login/")
+@require_http_methods(["POST", "DELETE"])
+def toggle_follow(request, user_id):
+
+    user_to_be_followed = get_object_or_404(User, pk=user_id)
+    follower = request.user
+
+    if not user_to_be_followed == follower:
+        user_to_be_followed.followers.add(follower) if request.method == 'POST' else user_to_be_followed.followers.remove(follower)
+
+    return JsonResponse({
+        'response': 'ok'
+    }, status=201)
+
 
 
 def me(request):
@@ -137,6 +146,7 @@ def profile_info(request, username):
         'username': profile.username,
         'followers': profile.followers.count(),
         'following': profile.following.count(),
+        'is_following': profile.is_following(request.user),
         'posts': [post.serialize(viewer=request.user) for post in posts]
     }, safe=False)
 
