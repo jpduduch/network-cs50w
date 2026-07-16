@@ -19,11 +19,6 @@ def layout(request, username = None):
     return render(request, "network/layout.html")
 
 
-def following(request):
-    # todo
-    return JsonResponse({ 'data': 'Following (todo)' }, status=200)
-
-
 def login_view(request):
     if request.method == "POST":
 
@@ -77,6 +72,7 @@ def register(request):
 
 
 # API calls
+# POST and delete
 @login_required(login_url="/login/")
 @require_POST
 def send_post(request):
@@ -128,6 +124,13 @@ def toggle_follow(request, user_id):
     }, status=400)
 
 
+# GET
+def following(request):
+    following_list = request.user.following.all()
+
+    return JsonResponse({'following': [user.username for user in following_list]}, safe=False)
+
+
 def me(request):
     if request.user.is_authenticated:
         return JsonResponse({
@@ -138,6 +141,13 @@ def me(request):
     return JsonResponse({
         "error": "Not authenticated."
     }, status=401)
+
+
+def posts(request):
+
+    user = request.user if request.user.is_authenticated else None
+    posts = _get_posts_queryset()
+    return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
 
 
 def profile_info(request, username):
@@ -153,13 +163,6 @@ def profile_info(request, username):
         'is_following': profile.is_following(request.user),
         'posts': [post.serialize(viewer=request.user) for post in posts]
     }, safe=False)
-
-
-def posts(request):
-
-    user = request.user if request.user.is_authenticated else None
-    posts = _get_posts_queryset()
-    return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
 
 
 # utils
