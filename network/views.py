@@ -119,10 +119,13 @@ def toggle_follow(request, user_id):
     if not user_to_be_followed == follower:
         user_to_be_followed.followers.add(follower) if request.method == 'POST' else user_to_be_followed.followers.remove(follower)
 
+        return JsonResponse({
+            'response': 'ok'
+        }, status=201)
+    
     return JsonResponse({
-        'response': 'ok'
-    }, status=201)
-
+        'error': 'You cannot follow yourself.'
+    }, status=400)
 
 
 def me(request):
@@ -143,6 +146,7 @@ def profile_info(request, username):
     posts = _get_posts_queryset(profile)
 
     return JsonResponse({
+        'id': profile.id,
         'username': profile.username,
         'followers': profile.followers.count(),
         'following': profile.following.count(),

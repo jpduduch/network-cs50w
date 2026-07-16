@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-15T14:49:01.935Z",
+    "last_login": "2026-07-16T06:53:39.678Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -15,7 +15,9 @@
     "date_joined": "2026-06-24T08:52:59.512Z",
     "groups": [],
     "user_permissions": [],
-    "following": []
+    "following": [
+      2
+    ]
   }
 },
 {
