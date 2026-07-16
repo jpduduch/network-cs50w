@@ -1,6 +1,7 @@
 import json
 from django.db import IntegrityError
 from django.test import TestCase, Client
+from django.urls import reverse
 from .models import User, Post
 from datetime import datetime
 
@@ -195,3 +196,145 @@ class LikeViewAuthenticationTests(TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertIn(self.author, self.post.likes.all())
+        
+
+class ToggleFollowViewTests(TestCase):
+
+    def setUp(self):
+        self.user_a = User.objects.create_user(username="alice", password="senha123")
+        self.user_b = User.objects.create_user(username="bruno", password="senha123")
+        self.user_c = User.objects.create_user(username="carla", password="senha123")
+ 
+    # ---------- Autenticação ----------
+ 
+    def test_follow_requires_authentication(self):
+        response = self.client.post(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
+ 
+    def test_unfollow_requires_authentication(self):
+        self.user_a.following.add(self.user_b)
+        response = self.client.delete(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 302)
+        # estado não deve ter mudado
+        self.assertTrue(self.user_a.following.filter(pk=self.user_b.pk).exists())
+ 
+    # ---------- Idempotência ----------
+ 
+    def test_follow_creates_relationship(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.post(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 201)
+        self.assertTrue(self.user_a.following.filter(pk=self.user_b.pk).exists())
+ 
+    def test_follow_twice_is_noop(self):
+        self.client.login(username="alice", password="senha123")
+        self.client.post(reverse("toggle_follow", kwargs={"user_id": self.user_b.id}))
+        response = self.client.post(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(self.user_a.following.filter(pk=self.user_b.pk).count(), 1)
+ 
+    def test_unfollow_removes_relationship(self):
+        self.user_a.following.add(self.user_b)
+        self.client.login(username="alice", password="senha123")
+        response = self.client.delete(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 201)
+        self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
+ 
+    def test_unfollow_before_following_is_noop(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.delete(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 201)
+        self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
+ 
+    # ---------- Regra: não pode seguir a si mesmo ----------
+ 
+    def test_cannot_follow_self(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.post(
+            reverse("toggle_follow", kwargs={"user_id": self.user_a.id})
+        )
+        data = json.loads(response.content)
+        self.assertIn("error", data)
+        self.assertFalse(self.user_a.following.filter(pk=self.user_a.pk).exists())
+ 
+    def test_cannot_unfollow_self(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.delete(
+            reverse("toggle_follow", kwargs={"user_id": self.user_a.id})
+        )
+        data = json.loads(response.content)
+        self.assertIn("error", data)
+ 
+    # ---------- Alvo inexistente ----------
+ 
+    def test_follow_nonexistent_user_returns_404(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.post(
+            reverse("toggle_follow", kwargs={"user_id": 999999})
+        )
+        self.assertEqual(response.status_code, 404)
+ 
+    def test_unfollow_nonexistent_user_returns_404(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.delete(
+            reverse("toggle_follow", kwargs={"user_id": 999999})
+        )
+        self.assertEqual(response.status_code, 404)
+ 
+    # ---------- Método HTTP errado ----------
+ 
+    def test_get_method_not_allowed(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.get(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        self.assertEqual(response.status_code, 405)
+ 
+    # ---------- Contrato da resposta de sucesso ----------
+ 
+    def test_follow_success_response_body(self):
+        self.client.login(username="alice", password="senha123")
+        response = self.client.post(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        data = json.loads(response.content)
+        self.assertEqual(data, {"response": "ok"})
+ 
+    def test_unfollow_success_response_body(self):
+        self.user_a.following.add(self.user_b)
+        self.client.login(username="alice", password="senha123")
+        response = self.client.delete(
+            reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
+        )
+        data = json.loads(response.content)
+        self.assertEqual(data, {"response": "ok"})
+ 
+    # ---------- Isolamento entre relações ----------
+ 
+    def test_following_one_user_does_not_affect_another(self):
+        self.client.login(username="alice", password="senha123")
+        self.client.post(reverse("toggle_follow", kwargs={"user_id": self.user_b.id}))
+        self.client.post(reverse("toggle_follow", kwargs={"user_id": self.user_c.id}))
+        self.assertTrue(self.user_a.following.filter(pk=self.user_b.pk).exists())
+        self.assertTrue(self.user_a.following.filter(pk=self.user_c.pk).exists())
+ 
+    def test_unfollowing_one_user_does_not_affect_others_followers(self):
+        self.user_a.following.add(self.user_b)
+        self.user_c.following.add(self.user_b)
+        self.client.login(username="alice", password="senha123")
+        self.client.delete(reverse("toggle_follow", kwargs={"user_id": self.user_b.id}))
+        self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
+        self.assertTrue(self.user_c.following.filter(pk=self.user_b.pk).exists())
