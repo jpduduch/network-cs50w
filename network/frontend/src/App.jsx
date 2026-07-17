@@ -22,7 +22,7 @@ function App() {
             <div className='container py-5 row d-flex justify-content-center' id="main">
                 <Routes>
                     <Route path="/" element={ <AllPosts user={ currentUser } /> } />
-                    <Route path="/following/" element={ <Following /> } />
+                    <Route path="/following/" element={ <Following user={ currentUser } /> } />
                     <Route path="/user/:username" element={ <Profile user={ currentUser } /> } />
                 </Routes>
             </div>

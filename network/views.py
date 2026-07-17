@@ -125,10 +125,18 @@ def toggle_follow(request, user_id):
 
 
 # GET
+@login_required(login_url='/login/')
 def following(request):
+
+    posts = Post.objects.all()
     following_list = request.user.following.all()
 
-    return JsonResponse({'following': [user.username for user in following_list]}, safe=False)
+    posts_from_following = posts.filter(author__in=following_list)
+
+    print([post.content for post in posts_from_following])
+
+
+    return JsonResponse([post.serialize(viewer=request.user) for post in posts_from_following], safe=False)
 
 
 def me(request):

@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-16T15:05:27.214Z",
+    "last_login": "2026-07-17T10:17:33.493Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -1061,6 +1061,28 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 97,
+  "fields": {
+    "content": "swqtwer \n",
+    "author": 1,
+    "date": "2026-07-17T10:19:37.508Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 98,
+  "fields": {
+    "content": "Mais um post.",
+    "author": 1,
+    "date": "2026-07-17T10:19:49.026Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
@@ -1174,6 +1196,14 @@
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wdq4T:NPOBSj7dlBg_aJdklS2I6_globKO1tbWJfMKwZtX1_U",
     "expire_date": "2026-07-12T14:01:17.974Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "htxq8uklikcdzq47qzqf9c91hn63xgmy",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wkfdN:wXsxLIrHBg-pemrlKGVqbX-NpFghzL0K1inZSDPypq4",
+    "expire_date": "2026-07-31T10:17:33.494Z"
   }
 },
 {
