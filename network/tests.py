@@ -338,3 +338,58 @@ class ToggleFollowViewTests(TestCase):
         self.client.delete(reverse("toggle_follow", kwargs={"user_id": self.user_b.id}))
         self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
         self.assertTrue(self.user_c.following.filter(pk=self.user_b.pk).exists())
+
+
+class FollowingViewTests(TestCase):
+
+    def setUp(self):
+        self.alice = User.objects.create_user(username="alice", password="pass12345")
+        self.bob = User.objects.create_user(username="bob", password="pass12345")
+        self.carol = User.objects.create_user(username="carol", password="pass12345")
+
+        # alice segue bob, mas não carol
+        self.alice.following.add(self.bob)
+
+        self.bob_post = Post.objects.create(author=self.bob, content="Post do Bob")
+        self.carol_post = Post.objects.create(author=self.carol, content="Post da Carol")
+
+    def test_anonymous_user_is_redirected_to_login(self):
+        response = self.client.get("/api/following/")
+        self.assertEqual(response.status_code, 302)
+        self.assertIn("/login/", response.url)
+
+    def test_returns_only_posts_from_followed_users(self):
+        self.client.login(username="alice", password="pass12345")
+        response = self.client.get("/api/following/")
+        self.assertEqual(response.status_code, 200)
+
+        returned_ids = {post["id"] for post in response.json()}
+        self.assertEqual(returned_ids, {self.bob_post.id})
+
+    def test_empty_list_when_following_no_one(self):
+        self.client.login(username="carol", password="pass12345")
+        response = self.client.get("/api/following/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), [])
+
+    def test_posts_ordered_newest_first(self):
+        newer_bob_post = Post.objects.create(author=self.bob, content="Post mais novo do Bob")
+
+        self.client.login(username="alice", password="pass12345")
+        response = self.client.get("/api/following/")
+        data = response.json()
+
+        returned_ids = [post["id"] for post in data]
+        self.assertEqual(returned_ids, [newer_bob_post.id, self.bob_post.id])
+
+    def test_post_method_not_allowed(self):
+        self.client.login(username="alice", password="pass12345")
+        response = self.client.post("/api/following/")
+        self.assertEqual(response.status_code, 405)
+
+    def test_unfollowing_removes_posts_from_feed(self):
+        self.client.login(username="alice", password="pass12345")
+        self.alice.following.remove(self.bob)
+
+        response = self.client.get("/api/following/")
+        self.assertEqual(response.json(), [])

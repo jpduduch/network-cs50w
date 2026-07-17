@@ -52,7 +52,7 @@ function Profile({user}) {
                 <span><span className="fw-bold">{userInfo.following}</span> <span className="text-body-secondary">following</span></span>
             </div>
             
-            { user ? <FollowButton isFollowing={ userInfo.is_following } onClick={ toggleFollow } /> : null }
+            { user && user.username !== userInfo.username ? <FollowButton isFollowing={ userInfo.is_following } onClick={ toggleFollow } /> : null }
             { followError ? <Caption value={ followError } /> : null }
             
             <hr />
