@@ -5,32 +5,36 @@ import getCSRFToken from '../utils/csrf';
 import apiFetch from '../utils/apiFetch';
 
 function NewPost({ onUpdate }) {
-
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState('');
     const [message, setMessage] = useState([]);
 
     function handleSubmit() {
         apiFetch('/api/send-post/', 'POST', { content })
-        .then(response => response.json())
-        .then(feedback => {
-            if ("error" in feedback) {
-                setMessage(feedback.error.content);
-            } else {
-                setMessage(feedback.message);
-                setContent("");
-                onUpdate();
-            }
-        })
+            .then((response) => response.json())
+            .then((feedback) => {
+                if ('error' in feedback) {
+                    setMessage(feedback.error.content);
+                } else {
+                    setMessage(feedback.message);
+                    setContent('');
+                    onUpdate();
+                }
+            });
     }
-    
+
     return (
-        <div className='d-flex flex-column gap-2 py-5'>
-            <TextArea label="What is on your mind?" onChange={ setContent } value={ content } caption={ message } />
-            <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
-                <Button label="Post" hierarchy='primary' onClick={ handleSubmit } />
+        <div className="d-flex flex-column gap-2 py-5">
+            <TextArea
+                label="What is on your mind?"
+                onChange={setContent}
+                value={content}
+                caption={message}
+            />
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                <Button label="Post" hierarchy="primary" onClick={handleSubmit} />
             </div>
         </div>
-    )
+    );
 }
 
-export default NewPost
+export default NewPost;

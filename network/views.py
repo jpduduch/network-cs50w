@@ -3,6 +3,7 @@ from django.middleware.csrf import get_token
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -158,6 +159,7 @@ def posts(request):
 
     user = request.user if request.user.is_authenticated else None
     posts = _get_posts_queryset()
+    page = Paginator(posts, 10)
     return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
 
 
@@ -187,4 +189,7 @@ def _get_posts_queryset(author=None):
 
 
 def _pagination():
+    # receber  página atual do GET do navegador
+    # lidar com erros de enviar páginas não existentes ou caracteres inválidos
+    # retornar
     pass
