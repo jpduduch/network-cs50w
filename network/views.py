@@ -155,12 +155,14 @@ def me(request):
     return JsonResponse({"error": "Not authenticated."}, status=401)
 
 
-def posts(request):
+def posts(request, page_number=1):
 
+    requested_page = request.GET.get("page", page_number)
     user = request.user if request.user.is_authenticated else None
-    posts = _get_posts_queryset()
-    page = Paginator(posts, 10)
-    return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
+    pages = _get_posts_queryset()
+    return JsonResponse(
+        [post.serialize(viewer=user) for post in pages.page(requested_page)], safe=False
+    )
 
 
 def profile_info(request, username):
@@ -184,8 +186,10 @@ def profile_info(request, username):
 # utils
 def _get_posts_queryset(author=None):
     qs = Post.objects.all() if author is None else Post.objects.filter(author=author)
+    ps = Paginator(qs.order_by("-date"), 10)
 
-    return qs.order_by("-date")
+    # rename this function and fix it for all use cases
+    return ps
 
 
 def _pagination():
