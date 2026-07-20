@@ -8,7 +8,7 @@ function PostsListGroup({ postsArray, user }) {
     return (
         <div>
             <ul className="d-flex flex-column gap-2 p-0">
-                {postsArray?.map((contents) => (
+                {postsArray.posts?.map((contents) => (
                     <Post key={contents.id} metadata={contents} user={user} />
                 ))}
             </ul>

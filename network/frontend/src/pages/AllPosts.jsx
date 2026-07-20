@@ -9,7 +9,7 @@ function AllPosts({ user }) {
 
     // updates all posts every submission
     useEffect(() => {
-        fetch('/api/posts/1/')
+        fetch('/api/posts/')
             .then((response) => response.json())
             .then((postsArray) => setPosts(postsArray));
     }, [refreshTrigger]);

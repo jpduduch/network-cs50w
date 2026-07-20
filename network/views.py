@@ -155,20 +155,31 @@ def me(request):
     return JsonResponse({"error": "Not authenticated."}, status=401)
 
 
-def posts(request, page_number=1):
+def posts(request):
 
-    requested_page = request.GET.get("page", page_number)
+    requested_page = request.GET.get("page")
     user = request.user if request.user.is_authenticated else None
-    pages = _get_posts_queryset()
+    pages = _get_all_pages()
+    page = pages.get_page(requested_page)
+
     return JsonResponse(
-        [post.serialize(viewer=user) for post in pages.page(requested_page)], safe=False
+        {
+            "page": {
+                "has_next": page.has_next(),
+                "has_prev": page.has_previous(),
+                "range": pages.num_pages,
+                "current": page.number,
+            },
+            "posts": [post.serialize(viewer=user) for post in page],
+        },
+        safe=False,
     )
 
 
 def profile_info(request, username):
 
     profile = get_object_or_404(User, username=username)
-    posts = _get_posts_queryset(profile)
+    pages = _get_all_pages(profile)
 
     return JsonResponse(
         {
@@ -177,23 +188,14 @@ def profile_info(request, username):
             "followers": profile.followers.count(),
             "following": profile.following.count(),
             "is_following": profile.is_following(request.user),
-            "posts": [post.serialize(viewer=request.user) for post in posts],
+            "posts": [post.serialize(viewer=request.user) for post in pages],
         },
         safe=False,
     )
 
 
 # utils
-def _get_posts_queryset(author=None):
-    qs = Post.objects.all() if author is None else Post.objects.filter(author=author)
-    ps = Paginator(qs.order_by("-date"), 10)
-
-    # rename this function and fix it for all use cases
-    return ps
-
-
-def _pagination():
-    # receber  página atual do GET do navegador
-    # lidar com erros de enviar páginas não existentes ou caracteres inválidos
-    # retornar
-    pass
+def _get_all_pages(source=None):
+    posts = Post.objects.all() if source is None else Post.objects.filter(viewer=source)
+    pages = Paginator(posts.order_by("-date"), 10)
+    return pages
