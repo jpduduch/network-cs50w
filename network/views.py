@@ -195,7 +195,8 @@ def profile_info(request, username):
 
 
 # utils
-def _get_all_pages(source=None):
+def _get_all_pages(source=None, page_number=1):
     posts = Post.objects.all() if source is None else Post.objects.filter(viewer=source)
-    pages = Paginator(posts.order_by("-date"), 10)
+    pages_obj = Paginator(posts.order_by("-date"), 10)
+    pages = 
     return pages
