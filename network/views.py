@@ -14,7 +14,7 @@ from django.views.decorators.http import require_http_methods, require_POST
 from .models import User, Post
 
 
-def layout(request, username=None):
+def shell(request, username=None):
 
     # place CSRF token into request variable sent to client
     get_token(request)
@@ -157,20 +157,12 @@ def me(request):
 
 def posts(request):
 
-    requested_page = request.GET.get("page")
+    requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
-    pages = _get_all_pages()
-    page = pages.get_page(requested_page)
 
     return JsonResponse(
         {
-            "page": {
-                "has_next": page.has_next(),
-                "has_prev": page.has_previous(),
-                "range": pages.num_pages,
-                "current": page.number,
-            },
-            "posts": [post.serialize(viewer=user) for post in page],
+            "page_info": _get_page_info(requested_page, user),
         },
         safe=False,
     )
@@ -178,25 +170,43 @@ def posts(request):
 
 def profile_info(request, username):
 
+    requested_page = request.GET.get("page") if not None else 1
+    user = request.user if request.user.is_authenticated else None
     profile = get_object_or_404(User, username=username)
-    pages = _get_all_pages(profile)
 
     return JsonResponse(
         {
-            "id": profile.id,
-            "username": profile.username,
-            "followers": profile.followers.count(),
-            "following": profile.following.count(),
-            "is_following": profile.is_following(request.user),
-            "posts": [post.serialize(viewer=request.user) for post in pages],
+            "profile": {
+                "id": profile.id,
+                "username": profile.username,
+                "followers": profile.followers.count(),
+                "following": profile.following.count(),
+                "is_followed": profile.is_followed(request.user),
+            },
+            "page_info": _get_page_info(requested_page, user, username),
         },
         safe=False,
     )
 
 
 # utils
-def _get_all_pages(source=None, page_number=1):
-    posts = Post.objects.all() if source is None else Post.objects.filter(viewer=source)
-    pages_obj = Paginator(posts.order_by("-date"), 10)
-    pages = 
-    return pages
+def _get_posts_queryset(author=None):
+    qs = Post.objects.all() if author is None else Post.objects.filter(author=author)
+    return qs.order_by("-date")
+
+
+def _get_page_info(page_number, viewer, author=None):
+
+    user = viewer if not None else None
+    pages = Paginator(_get_posts_queryset(author), 10)
+    page = pages.get_page(page_number)
+
+    page_info = {
+        "content": [post.serialize(has_like_from=user) for post in page],
+        "has_next": page.has_next(),
+        "has_prev": page.has_previous(),
+        "range": pages.num_pages,
+        "current": page.number,
+    }
+
+    return page_info

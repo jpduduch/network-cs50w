@@ -36,7 +36,7 @@ function Post({ metadata, user }) {
             method = 'POST';
         }
 
-        apiFetch(`/api/posts/${metadata.id}/set-like/`, method);
+        apiFetch(`/api/posts/${metadata.id}/toggle-like/`, method);
     }
 
     return (

@@ -22,7 +22,7 @@ function Profile({ user }) {
 
     // follow / unfollow behavior
     function toggleFollow() {
-        const url = `/api/users/${userInfo.id}/set-follow`;
+        const url = `/api/users/${userInfo.id}/toggle-follow`;
         const method = userInfo.is_following ? 'DELETE' : 'POST';
 
         apiFetch(url, method)
@@ -30,7 +30,7 @@ function Profile({ user }) {
             .then((body) => {
                 if ('error' in body) {
                     setFollowError(body.error);
-                } else{ 
+                } else {
                     setUserInfo((prev) => ({
                         ...prev,
                         followers: prev.is_following ? prev.followers - 1 : prev.followers + 1,
