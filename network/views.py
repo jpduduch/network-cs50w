@@ -201,6 +201,7 @@ def _get_posts_list(user=None, author=None):
     else:
         qs = Post.objects.filter(author__in=author)
 
+    # _Fix performance bug. This should be in get_posts_per_page function
     # Transform Queryset into list
     return [post.serialize(has_like_from=user) for post in qs.order_by("-date")]
 
