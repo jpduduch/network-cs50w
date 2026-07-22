@@ -148,7 +148,7 @@ def posts(request):
 
     requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
-    posts = _get_posts_list(user)
+    posts = _get_posts_list(user=user)
 
     return JsonResponse(
         _get_posts_per_page(posts, requested_page),
@@ -160,9 +160,10 @@ def posts(request):
 @login_required(login_url="/login/")
 def following(request):
 
+    user = request.user if request.user.is_authenticated else None
     requested_page = request.GET.get("page") if not None else 1
     following_list = request.user.following.all()
-    posts = _get_posts_list(following_list)
+    posts = _get_posts_list(user=user, author=following_list)
     page = _get_posts_per_page(posts, requested_page)
 
     return JsonResponse(page)
@@ -173,7 +174,9 @@ def profile(request, username):
     requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
     profile = get_object_or_404(User, username=username)
-    page = _get_posts_per_page(_get_posts_list(user), requested_page)
+    page = _get_posts_per_page(
+        _get_posts_list(user=user, author=profile), requested_page
+    )
 
     return JsonResponse(
         {
@@ -188,7 +191,7 @@ def profile(request, username):
 
 
 # utils
-def _get_posts_list(author=None):
+def _get_posts_list(user=None, author=None):
 
     # Check if author exists, if it is a single one or several
     if type(author) != QuerySet:
@@ -199,7 +202,7 @@ def _get_posts_list(author=None):
         qs = Post.objects.filter(author__in=author)
 
     # Transform Queryset into list
-    return [post.serialize() for post in qs.order_by("-date")]
+    return [post.serialize(has_like_from=user) for post in qs.order_by("-date")]
 
 
 def _get_posts_per_page(posts, page_number):

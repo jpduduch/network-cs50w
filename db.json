@@ -25,7 +25,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Wioxs4922kzwnFlQOV5S28$wg085ublEK9NWfFnKujabQOww2Z8GC80DKUYw38X858=",
-    "last_login": "2026-07-14T13:16:40.682Z",
+    "last_login": "2026-07-22T14:20:38.108Z",
     "is_superuser": false,
     "username": "ron",
     "first_name": "",
@@ -1031,8 +1031,7 @@
     "author": 2,
     "date": "2026-07-14T12:22:44.785Z",
     "likes": [
-      1,
-      2
+      1
     ]
   }
 },
@@ -1078,8 +1077,19 @@
     "author": 1,
     "date": "2026-07-17T10:19:49.026Z",
     "likes": [
-      1
+      1,
+      2
     ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 99,
+  "fields": {
+    "content": "New post",
+    "author": 2,
+    "date": "2026-07-22T14:32:41.888Z",
+    "likes": []
   }
 },
 {
@@ -1184,14 +1194,6 @@
 },
 {
   "model": "sessions.session",
-  "pk": "brq9vvl6ymh7uzcsb7uokj2frwppmv64",
-  "fields": {
-    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wmVjN:V7rhUnE-b8PmAZ_iyPEIwv4eZTsvM_LM4XGbHb_nYFw",
-    "expire_date": "2026-08-05T12:07:21.112Z"
-  }
-},
-{
-  "model": "sessions.session",
   "pk": "f5ols600rs59227x68f9dveq2mrjp8fv",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wjd4p:8vtcwjJ8iHCz8YwnPz2PcRDd3u4TGrAFAMAcIYR16Ok",
@@ -1220,6 +1222,14 @@
   "fields": {
     "session_data": "e30:1wceRw:Lmp_2_Sf1NL6cX7PTW2yurrDze1wPef_xTNGDgJuKGU",
     "expire_date": "2026-07-09T07:24:36.517Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "lqonlg22ewcoy7sk2lv3u4h2axs0vcv2",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEMlEdduvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3TgQ2FGYINBqTtQUEz9mXomggp8bC6JLSbHTybAMwEpB32QYVkhnE-wP-HThY:1wmXoM:RtZ-FU8FDnMbGYPvw05KHJCmNzoA3W-xI8BZxskCq4Q",
+    "expire_date": "2026-08-05T14:20:38.109Z"
   }
 },
 {

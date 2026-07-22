@@ -7,10 +7,11 @@ from datetime import datetime
 
 # Create your tests here.
 
+
 class ModelFollowTests(TestCase):
     def setUp(self):
-        self.user_a = User.objects.create_user(username='user_a', password='123')
-        self.user_b = User.objects.create_user(username='user_b', password='123')
+        self.user_a = User.objects.create_user(username="user_a", password="123")
+        self.user_b = User.objects.create_user(username="user_b", password="123")
 
     def test_user_can_follow_another(self):
         self.user_a.following.add(self.user_b)
@@ -37,21 +38,21 @@ class ModelFollowTests(TestCase):
 
 class ModelPostTests(TestCase):
     def setUp(self):
-        self.user_a = User.objects.create_user(username='user_a', password='123')
-        self.user_b = User.objects.create_user(username='user_b', password='123')
-        self.user_c = User.objects.create_user(username='user_c', password='123')
+        self.user_a = User.objects.create_user(username="user_a", password="123")
+        self.user_b = User.objects.create_user(username="user_b", password="123")
+        self.user_c = User.objects.create_user(username="user_c", password="123")
 
     def test_anonymous_user_cannot_post(self):
         with self.assertRaises(IntegrityError):
-            Post.objects.create(content='Anonymous post')
+            Post.objects.create(content="Anonymous post")
 
     def test_authenticated_user_can_post(self):
-        Post.objects.create(content='Some post', author=self.user_a)
+        Post.objects.create(content="Some post", author=self.user_a)
         post_exists = Post.objects.filter(author=self.user_a)
         self.assertTrue(post_exists)
 
     def test_user_can_like_and_dislike_own_post(self):
-        post = Post.objects.create(content='Some post', author=self.user_a)
+        post = Post.objects.create(content="Some post", author=self.user_a)
         self.user_a.liked_posts.add(post)
         like_exists = Post.objects.filter(likes=self.user_a).exists()
         self.assertTrue(like_exists)
@@ -59,9 +60,9 @@ class ModelPostTests(TestCase):
         self.user_a.liked_posts.remove(post)
         like_exists = Post.objects.filter(likes=self.user_a).exists()
         self.assertFalse(like_exists)
-    
+
     def test_user_can_like_and_dislike_other_post(self):
-        post = Post.objects.create(content='Some post', author=self.user_a)
+        post = Post.objects.create(content="Some post", author=self.user_a)
         self.user_b.liked_posts.add(post)
         like_exists = Post.objects.filter(likes=self.user_b).exists()
         self.assertTrue(like_exists)
@@ -71,8 +72,8 @@ class ModelPostTests(TestCase):
         self.assertFalse(like_exists)
 
     def test_user_sees_only_posts_from_users_they_follow(self):
-        post_a = Post.objects.create(content='This is post A.', author=self.user_a)
-        post_b = Post.objects.create(content='This is Post B', author=self.user_b)
+        post_a = Post.objects.create(content="This is post A.", author=self.user_a)
+        post_b = Post.objects.create(content="This is Post B", author=self.user_b)
         self.user_c.following.add(self.user_b)
 
         posts_from_following = Post.objects.filter(author__followers=self.user_c)
@@ -82,10 +83,10 @@ class ModelPostTests(TestCase):
     def test_model_returns_correct_fields(self):
         Post.objects.create(content="ABC", author=self.user_a)
         post = Post.objects.all().first()
-        self.assertTrue(type(post.content), str)
-        self.assertTrue(type(post.author.username), str)
-        self.assertTrue(type(post.likes), int)
-        self.assertTrue(type(post.date), datetime)
+        self.assertIsInstance(post.content, str)
+        self.assertIsInstance(post.author.username, str)
+        self.assertIsInstance(post.likes.count(), int)
+        self.assertIsInstance(post.date, datetime)
 
 
 class ViewPostTests(TestCase):
@@ -114,7 +115,7 @@ class ViewPostTests(TestCase):
         response = self.client.post(
             self.send_post_addr,
             data=json.dumps({"content": "Novo post"}),
-            content_type="application/json"
+            content_type="application/json",
         )
 
         self.assertEqual(response.status_code, 201)
@@ -126,30 +127,38 @@ class ViewPostTests(TestCase):
         response = self.client.post(
             self.send_post_addr,
             data=json.dumps({"content": ""}),
-            content_type="application/json"
+            content_type="application/json",
         )
 
         self.assertEqual(response.status_code, 400)
 
     def test_api_returns_correct_amount_of_posts(self):
         self.client.login(username="user_a", password="123")
-        
+
         posts_initial_amount = Post.objects.all().count()
         post_amount = 99
-        
+
         for _ in range(post_amount):
             self.client.post(
                 self.send_post_addr,
                 data=json.dumps({"content": f"Content {_}"}),
-                content_type="application/json"
+                content_type="application/json",
             )
 
-        self.assertEqual(post_amount, Post.objects.all().count() - posts_initial_amount)
-        api_response = self.client.get('/api/posts/')
-        self.assertEqual(len(api_response.json()), post_amount + posts_initial_amount)
+        total_posts = post_amount + posts_initial_amount
+        self.assertEqual(total_posts, Post.objects.all().count())
+
+        api_response = self.client.get("/api/posts/").json()
+
+        # Cada página devolve no máximo 10 posts (limite do Paginator)
+        self.assertEqual(len(api_response["posts"]), 10)
+
+        # O total de páginas reflete o total real de posts no banco
+        expected_pages = -(-total_posts // 10)  # ceil division
+        self.assertEqual(api_response["page"]["range"], expected_pages)
 
     def test_api_returns_correct_field_types(self):
-        first_post = self.client.get('/api/posts/').json()[0]
+        first_post = self.client.get("/api/posts/").json()["posts"][0]
         self.assertIsInstance(first_post["content"], str)
         self.assertIsInstance(first_post["author"], str)
         self.assertIsInstance(first_post["likes"], int)
@@ -157,12 +166,21 @@ class ViewPostTests(TestCase):
         # Ensure date is in readable format:
         datetime.strptime(first_post["date"], "%b %d %Y, %I:%M %p")
 
+    def test_general_feed_shows_posts_from_all_users(self):
+        # Regressão do bug: /api/posts/ não deve filtrar pelo usuário logado
+        self.client.login(username="user_a", password="123")
+        response = self.client.get("/api/posts/").json()
+
+        returned_ids = {post["id"] for post in response["posts"]}
+        all_ids = set(Post.objects.values_list("id", flat=True))
+        self.assertEqual(returned_ids, all_ids)
+
 
 class LikeViewAuthenticationTests(TestCase):
     def setUp(self):
         self.author = User.objects.create_user(username="autor", password="senha123")
         self.post = Post.objects.create(author=self.author, content="Post de teste")
-        self.like_url = f"/api/posts/{self.post.id}/set-like/"
+        self.like_url = reverse("toggle_like", kwargs={"post_id": self.post.id})
 
     def test_anonymous_user_cannot_like_post(self):
         response = self.client.post(self.like_url)
@@ -196,7 +214,7 @@ class LikeViewAuthenticationTests(TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertIn(self.author, self.post.likes.all())
-        
+
 
 class ToggleFollowViewTests(TestCase):
 
@@ -204,16 +222,16 @@ class ToggleFollowViewTests(TestCase):
         self.user_a = User.objects.create_user(username="alice", password="senha123")
         self.user_b = User.objects.create_user(username="bruno", password="senha123")
         self.user_c = User.objects.create_user(username="carla", password="senha123")
- 
+
     # ---------- Autenticação ----------
- 
+
     def test_follow_requires_authentication(self):
         response = self.client.post(
             reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
         )
         self.assertEqual(response.status_code, 302)
         self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
- 
+
     def test_unfollow_requires_authentication(self):
         self.user_a.following.add(self.user_b)
         response = self.client.delete(
@@ -222,9 +240,9 @@ class ToggleFollowViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         # estado não deve ter mudado
         self.assertTrue(self.user_a.following.filter(pk=self.user_b.pk).exists())
- 
+
     # ---------- Idempotência ----------
- 
+
     def test_follow_creates_relationship(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.post(
@@ -232,7 +250,7 @@ class ToggleFollowViewTests(TestCase):
         )
         self.assertEqual(response.status_code, 201)
         self.assertTrue(self.user_a.following.filter(pk=self.user_b.pk).exists())
- 
+
     def test_follow_twice_is_noop(self):
         self.client.login(username="alice", password="senha123")
         self.client.post(reverse("toggle_follow", kwargs={"user_id": self.user_b.id}))
@@ -241,7 +259,7 @@ class ToggleFollowViewTests(TestCase):
         )
         self.assertEqual(response.status_code, 201)
         self.assertEqual(self.user_a.following.filter(pk=self.user_b.pk).count(), 1)
- 
+
     def test_unfollow_removes_relationship(self):
         self.user_a.following.add(self.user_b)
         self.client.login(username="alice", password="senha123")
@@ -250,7 +268,7 @@ class ToggleFollowViewTests(TestCase):
         )
         self.assertEqual(response.status_code, 201)
         self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
- 
+
     def test_unfollow_before_following_is_noop(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.delete(
@@ -258,9 +276,9 @@ class ToggleFollowViewTests(TestCase):
         )
         self.assertEqual(response.status_code, 201)
         self.assertFalse(self.user_a.following.filter(pk=self.user_b.pk).exists())
- 
+
     # ---------- Regra: não pode seguir a si mesmo ----------
- 
+
     def test_cannot_follow_self(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.post(
@@ -269,7 +287,7 @@ class ToggleFollowViewTests(TestCase):
         data = json.loads(response.content)
         self.assertIn("error", data)
         self.assertFalse(self.user_a.following.filter(pk=self.user_a.pk).exists())
- 
+
     def test_cannot_unfollow_self(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.delete(
@@ -277,34 +295,34 @@ class ToggleFollowViewTests(TestCase):
         )
         data = json.loads(response.content)
         self.assertIn("error", data)
- 
+
     # ---------- Alvo inexistente ----------
- 
+
     def test_follow_nonexistent_user_returns_404(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.post(
             reverse("toggle_follow", kwargs={"user_id": 999999})
         )
         self.assertEqual(response.status_code, 404)
- 
+
     def test_unfollow_nonexistent_user_returns_404(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.delete(
             reverse("toggle_follow", kwargs={"user_id": 999999})
         )
         self.assertEqual(response.status_code, 404)
- 
+
     # ---------- Método HTTP errado ----------
- 
+
     def test_get_method_not_allowed(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.get(
             reverse("toggle_follow", kwargs={"user_id": self.user_b.id})
         )
         self.assertEqual(response.status_code, 405)
- 
+
     # ---------- Contrato da resposta de sucesso ----------
- 
+
     def test_follow_success_response_body(self):
         self.client.login(username="alice", password="senha123")
         response = self.client.post(
@@ -312,7 +330,7 @@ class ToggleFollowViewTests(TestCase):
         )
         data = json.loads(response.content)
         self.assertEqual(data, {"response": "ok"})
- 
+
     def test_unfollow_success_response_body(self):
         self.user_a.following.add(self.user_b)
         self.client.login(username="alice", password="senha123")
@@ -321,16 +339,16 @@ class ToggleFollowViewTests(TestCase):
         )
         data = json.loads(response.content)
         self.assertEqual(data, {"response": "ok"})
- 
+
     # ---------- Isolamento entre relações ----------
- 
+
     def test_following_one_user_does_not_affect_another(self):
         self.client.login(username="alice", password="senha123")
         self.client.post(reverse("toggle_follow", kwargs={"user_id": self.user_b.id}))
         self.client.post(reverse("toggle_follow", kwargs={"user_id": self.user_c.id}))
         self.assertTrue(self.user_a.following.filter(pk=self.user_b.pk).exists())
         self.assertTrue(self.user_a.following.filter(pk=self.user_c.pk).exists())
- 
+
     def test_unfollowing_one_user_does_not_affect_others_followers(self):
         self.user_a.following.add(self.user_b)
         self.user_c.following.add(self.user_b)
@@ -351,7 +369,9 @@ class FollowingViewTests(TestCase):
         self.alice.following.add(self.bob)
 
         self.bob_post = Post.objects.create(author=self.bob, content="Post do Bob")
-        self.carol_post = Post.objects.create(author=self.carol, content="Post da Carol")
+        self.carol_post = Post.objects.create(
+            author=self.carol, content="Post da Carol"
+        )
 
     def test_anonymous_user_is_redirected_to_login(self):
         response = self.client.get("/api/following/")
@@ -363,21 +383,23 @@ class FollowingViewTests(TestCase):
         response = self.client.get("/api/following/")
         self.assertEqual(response.status_code, 200)
 
-        returned_ids = {post["id"] for post in response.json()}
+        returned_ids = {post["id"] for post in response.json()["posts"]}
         self.assertEqual(returned_ids, {self.bob_post.id})
 
     def test_empty_list_when_following_no_one(self):
         self.client.login(username="carol", password="pass12345")
         response = self.client.get("/api/following/")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), [])
+        self.assertEqual(response.json()["posts"], [])
 
     def test_posts_ordered_newest_first(self):
-        newer_bob_post = Post.objects.create(author=self.bob, content="Post mais novo do Bob")
+        newer_bob_post = Post.objects.create(
+            author=self.bob, content="Post mais novo do Bob"
+        )
 
         self.client.login(username="alice", password="pass12345")
         response = self.client.get("/api/following/")
-        data = response.json()
+        data = response.json()["posts"]
 
         returned_ids = [post["id"] for post in data]
         self.assertEqual(returned_ids, [newer_bob_post.id, self.bob_post.id])
@@ -392,4 +414,53 @@ class FollowingViewTests(TestCase):
         self.alice.following.remove(self.bob)
 
         response = self.client.get("/api/following/")
-        self.assertEqual(response.json(), [])
+        self.assertEqual(response.json()["posts"], [])
+
+
+class ProfileViewTests(TestCase):
+    """
+    Cobre a regressão do bug em profile(): a view estava usando o usuário
+    logado (request.user) para filtrar os posts, em vez do usuário dono
+    do perfil visitado (username da URL).
+    """
+
+    def setUp(self):
+        self.user_a = User.objects.create_user(username="user_a", password="123")
+        self.user_b = User.objects.create_user(username="user_b", password="123")
+
+        self.post_a = Post.objects.create(content="Post do user_a", author=self.user_a)
+        self.post_b = Post.objects.create(content="Post do user_b", author=self.user_b)
+
+    def profile_url(self, username):
+        return reverse("profile", kwargs={"username": username})
+
+    def test_profile_shows_posts_from_profile_owner_not_from_visitor(self):
+        # user_b está logado, mas visita o perfil de user_a
+        self.client.login(username="user_b", password="123")
+        response = self.client.get(self.profile_url("user_a"))
+        self.assertEqual(response.status_code, 200)
+
+        data = response.json()
+        returned_ids = {post["id"] for post in data["posts"]}
+
+        self.assertEqual(returned_ids, {self.post_a.id})
+        self.assertNotIn(self.post_b.id, returned_ids)
+
+    def test_anonymous_user_can_view_profile_posts(self):
+        response = self.client.get(self.profile_url("user_a"))
+        self.assertEqual(response.status_code, 200)
+
+        returned_ids = {post["id"] for post in response.json()["posts"]}
+        self.assertEqual(returned_ids, {self.post_a.id})
+
+    def test_profile_metadata_matches_requested_user(self):
+        self.client.login(username="user_b", password="123")
+        response = self.client.get(self.profile_url("user_a"))
+        data = response.json()
+
+        self.assertEqual(data["username"], "user_a")
+        self.assertEqual(data["id"], self.user_a.id)
+
+    def test_profile_nonexistent_user_returns_404(self):
+        response = self.client.get(self.profile_url("nao_existe"))
+        self.assertEqual(response.status_code, 404)
