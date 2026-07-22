@@ -2,20 +2,19 @@ import Pagination from '../components/pagination/Pagination';
 import Post from '../components/Post';
 import { useEffect, useState } from 'react';
 
-function PostsListGroup({ postsArray, user }) {
-    console.log(postsArray.page_info);
+function PostsListGroup({ posts, paginationInfo, user }) {
     return (
         <div>
             <ul className="d-flex flex-column gap-2 p-0">
-                {postsArray.page_info?.content.map((contents) => (
-                    <Post key={contents.id} metadata={contents} user={user} />
+                {posts?.map((post) => (
+                    <Post key={post.id} metadata={post} user={user} />
                 ))}
             </ul>
-            {/* <Pagination
-                hasPrev={postsArray.page_info.has_prev}
-                hasNext={postsArray.page_info.has_next}
+            <Pagination
+                hasPrev={paginationInfo?.has_prev}
+                hasNext={paginationInfo?.has_next}
                 numPages={3}
-            /> */}
+            />
         </div>
     );
 }

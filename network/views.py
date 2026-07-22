@@ -5,10 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.db import IntegrityError
+from django.db.models.query import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods, require_POST
+from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 
 from .models import User, Post
@@ -126,22 +127,9 @@ def toggle_follow(request, user_id):
     return JsonResponse({"error": "You cannot follow yourself."}, status=400)
 
 
+# ------------
 # GET
-@require_http_methods(["GET"])
-@login_required(login_url="/login/")
-def following(request):
-
-    following_list = request.user.following.all()
-    posts_from_following = Post.objects.filter(author__in=following_list).order_by(
-        "-date"
-    )
-
-    return JsonResponse(
-        [post.serialize(viewer=request.user) for post in posts_from_following],
-        safe=False,
-    )
-
-
+@require_GET
 def me(request):
     if request.user.is_authenticated:
         return JsonResponse(
@@ -155,58 +143,78 @@ def me(request):
     return JsonResponse({"error": "Not authenticated."}, status=401)
 
 
+@require_GET
 def posts(request):
 
     requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
+    posts = _get_posts_list(user)
 
     return JsonResponse(
-        {
-            "page_info": _get_page_info(requested_page, user),
-        },
+        _get_posts_per_page(posts, requested_page),
         safe=False,
     )
 
 
-def profile_info(request, username):
+@require_GET
+@login_required(login_url="/login/")
+def following(request):
+
+    requested_page = request.GET.get("page") if not None else 1
+    following_list = request.user.following.all()
+    posts = _get_posts_list(following_list)
+    page = _get_posts_per_page(posts, requested_page)
+
+    return JsonResponse(page)
+
+
+def profile(request, username):
 
     requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
     profile = get_object_or_404(User, username=username)
+    page = _get_posts_per_page(_get_posts_list(user), requested_page)
 
     return JsonResponse(
         {
-            "profile": {
-                "id": profile.id,
-                "username": profile.username,
-                "followers": profile.followers.count(),
-                "following": profile.following.count(),
-                "is_followed": profile.is_followed(request.user),
-            },
-            "page_info": _get_page_info(requested_page, user, username),
-        },
-        safe=False,
+            "id": profile.id,
+            "username": profile.username,
+            "followers": profile.followers.count(),
+            "following": profile.following.count(),
+            "is_followed": profile.is_followed(request.user),
+        }
+        | page
     )
 
 
 # utils
-def _get_posts_queryset(author=None):
-    qs = Post.objects.all() if author is None else Post.objects.filter(author=author)
-    return qs.order_by("-date")
+def _get_posts_list(author=None):
+
+    # Check if author exists, if it is a single one or several
+    if type(author) != QuerySet:
+        qs = (
+            Post.objects.all() if author is None else Post.objects.filter(author=author)
+        )
+    else:
+        qs = Post.objects.filter(author__in=author)
+
+    # Transform Queryset into list
+    return [post.serialize() for post in qs.order_by("-date")]
 
 
-def _get_page_info(page_number, viewer, author=None):
+def _get_posts_per_page(posts, page_number):
 
-    user = viewer if not None else None
-    pages = Paginator(_get_posts_queryset(author), 10)
+    pages = Paginator(posts, 10)
     page = pages.get_page(page_number)
 
-    page_info = {
-        "content": [post.serialize(has_like_from=user) for post in page],
-        "has_next": page.has_next(),
-        "has_prev": page.has_previous(),
-        "range": pages.num_pages,
-        "current": page.number,
+    page_data = {
+        "posts": [post for post in page],
+        "page": {
+            "has_next": page.has_next(),
+            "has_prev": page.has_previous(),
+            "range": pages.num_pages,
+            "current": page.number,
+        },
     }
 
-    return page_info
+    return page_data

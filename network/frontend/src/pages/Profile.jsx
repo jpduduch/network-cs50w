@@ -8,7 +8,7 @@ import Caption from '../components/Caption';
 
 function Profile({ user }) {
     const { username } = useParams();
-    const [userInfo, setUserInfo] = useState({});
+    const [profileData, setProfileData] = useState({});
     const [followError, setFollowError] = useState(null);
 
     // fetch requested profile info
@@ -16,14 +16,16 @@ function Profile({ user }) {
         fetch(`/api/users/${username}`)
             .then((response) => response.json())
             .then((body) => {
-                setUserInfo(body);
+                setProfileData(body);
             });
     }, []);
 
+    console.log(profileData);
+
     // follow / unfollow behavior
     function toggleFollow() {
-        const url = `/api/users/${userInfo.id}/toggle-follow`;
-        const method = userInfo.is_following ? 'DELETE' : 'POST';
+        const url = `/api/users/${profileData.id}/toggle-follow`;
+        const method = profileData.is_followed ? 'DELETE' : 'POST';
 
         apiFetch(url, method)
             .then((response) => response.json())
@@ -31,10 +33,10 @@ function Profile({ user }) {
                 if ('error' in body) {
                     setFollowError(body.error);
                 } else {
-                    setUserInfo((prev) => ({
+                    setProfileData((prev) => ({
                         ...prev,
-                        followers: prev.is_following ? prev.followers - 1 : prev.followers + 1,
-                        is_following: !prev.is_following,
+                        followers: prev.is_followed ? prev.followers - 1 : prev.followers + 1,
+                        is_followed: !prev.is_followed,
                     }));
                 }
             });
@@ -42,20 +44,20 @@ function Profile({ user }) {
 
     return (
         <main className="d-flex gap-4 flex-column">
-            <h3>{userInfo.username}</h3>
+            <h3>{profileData.username}</h3>
             <div className="d-flex gap-4">
                 <span>
-                    <span className="fw-bold">{userInfo.followers}</span>{' '}
+                    <span className="fw-bold">{profileData.followers}</span>{' '}
                     <span className="text-body-secondary">followers</span>
                 </span>
                 <span>
-                    <span className="fw-bold">{userInfo.following}</span>{' '}
+                    <span className="fw-bold">{profileData.following}</span>{' '}
                     <span className="text-body-secondary">following</span>
                 </span>
             </div>
 
-            {user && user.username !== userInfo.username ? (
-                <FollowButton isFollowing={userInfo.is_following} onClick={toggleFollow} />
+            {user && user.username !== profileData.username ? (
+                <FollowButton isFollowing={profileData.is_followed} onClick={toggleFollow} />
             ) : null}
             {followError ? <Caption value={followError} /> : null}
 
@@ -63,7 +65,11 @@ function Profile({ user }) {
 
             <h6>Posts</h6>
 
-            <PostsListGroup postsArray={userInfo.posts} user={user} />
+            <PostsListGroup
+                posts={profileData.posts}
+                paginationInfo={profileData.page}
+                user={user}
+            />
         </main>
     );
 }

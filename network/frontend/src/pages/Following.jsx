@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import PostsListGroup from '../modules/PostsListGroup';
 
 function Following({ user }) {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
