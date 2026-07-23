@@ -148,10 +148,12 @@ def posts(request):
 
     requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
-    posts = _get_posts_list(user=user)
+    all_posts = _get_posts_queryset()
 
     return JsonResponse(
-        _get_posts_per_page(posts, requested_page),
+        _get_posts_per_page(
+            posts=all_posts, page_number=requested_page, has_like_from=user
+        ),
         safe=False,
     )
 
@@ -163,8 +165,10 @@ def following(request):
     user = request.user if request.user.is_authenticated else None
     requested_page = request.GET.get("page") if not None else 1
     following_list = request.user.following.all()
-    posts = _get_posts_list(user=user, author=following_list)
-    page = _get_posts_per_page(posts, requested_page)
+    posts_from_following = _get_posts_queryset(post_creator=following_list)
+    page = _get_posts_per_page(
+        posts=posts_from_following, page_number=requested_page, has_like_from=user
+    )
 
     return JsonResponse(page)
 
@@ -174,8 +178,9 @@ def profile(request, username):
     requested_page = request.GET.get("page") if not None else 1
     user = request.user if request.user.is_authenticated else None
     profile = get_object_or_404(User, username=username)
+    posts_from_profile = _get_posts_queryset(post_creator=profile)
     page = _get_posts_per_page(
-        _get_posts_list(user=user, author=profile), requested_page
+        posts=posts_from_profile, page_number=requested_page, has_like_from=user
     )
 
     return JsonResponse(
@@ -191,28 +196,34 @@ def profile(request, username):
 
 
 # utils
-def _get_posts_list(user=None, author=None):
+def _get_posts_queryset(post_creator=None):
 
     # Check if author exists, if it is a single one or several
-    if type(author) != QuerySet:
+    if type(post_creator) != QuerySet:
         qs = (
-            Post.objects.all() if author is None else Post.objects.filter(author=author)
+            Post.objects.all()
+            if post_creator is None
+            else Post.objects.filter(author=post_creator)
         )
     else:
-        qs = Post.objects.filter(author__in=author)
+        qs = Post.objects.filter(author__in=post_creator)
 
     # _Fix performance bug. This should be in get_posts_per_page function
     # Transform Queryset into list
-    return [post.serialize(has_like_from=user) for post in qs.order_by("-date")]
+    return qs.order_by("-date")
 
 
-def _get_posts_per_page(posts, page_number):
+def _get_posts_per_page(
+    posts,
+    page_number,
+    has_like_from=None,
+):
 
     pages = Paginator(posts, 10)
     page = pages.get_page(page_number)
 
     page_data = {
-        "posts": [post for post in page],
+        "posts": [post.serialize(has_like_from=has_like_from) for post in page],
         "page": {
             "has_next": page.has_next(),
             "has_prev": page.has_previous(),
