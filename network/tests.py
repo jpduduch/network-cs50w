@@ -432,7 +432,7 @@ class ProfileViewTests(TestCase):
         self.post_b = Post.objects.create(content="Post do user_b", author=self.user_b)
 
     def profile_url(self, username):
-        return reverse("profile", kwargs={"username": username})
+        return reverse("api_profile", kwargs={"username": username})
 
     def test_profile_shows_posts_from_profile_owner_not_from_visitor(self):
         # user_b está logado, mas visita o perfil de user_a
