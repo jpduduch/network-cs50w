@@ -15,9 +15,7 @@
     "date_joined": "2026-06-24T08:52:59.512Z",
     "groups": [],
     "user_permissions": [],
-    "following": [
-      2
-    ]
+    "following": []
   }
 },
 {
@@ -1145,6 +1143,28 @@
     "content": " e23e32",
     "author": 1,
     "date": "2026-07-24T09:11:28.552Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 105,
+  "fields": {
+    "content": "dadasdqweqwe ",
+    "author": 1,
+    "date": "2026-07-24T12:57:48.710Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 106,
+  "fields": {
+    "content": "1321313 ",
+    "author": 1,
+    "date": "2026-07-24T12:57:53.685Z",
     "likes": []
   }
 },

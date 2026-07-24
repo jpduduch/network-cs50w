@@ -21,8 +21,10 @@ function PostsListGroup({ fetchAddress, user, newPost = 0 }) {
 
     return (
         <div>
-            {isLoading ? (
-                'Loading posts…'
+            {isLoading ? 'Loading posts…' : null}
+
+            {posts.length === 0 && !isLoading ? (
+                'No posts.'
             ) : (
                 <ul className="d-flex flex-column gap-2 p-0">
                     {posts?.map((post) => (
@@ -33,7 +35,8 @@ function PostsListGroup({ fetchAddress, user, newPost = 0 }) {
             <Pagination
                 hasPrev={paginationInfo?.has_prev}
                 hasNext={paginationInfo?.has_next}
-                numPages={3}
+                numPages={paginationInfo?.range}
+                currentPage={paginationInfo?.current}
             />
         </div>
     );

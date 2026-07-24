@@ -11,18 +11,14 @@ function Following({ user }) {
         async function followingInfo() {
             const response = await fetch(`/api/users/${user.username}/`);
             const metadata = await response.json();
-            metadata.following !== 0 ? setHasFollowers(true) : setHasFollowers(false);
+            setHasFollowers(metadata.following !== 0 ? true : false);
         }
         followingInfo();
     }, [user]);
 
     return (
         <div>
-            {hasFollowers ? (
-                <PostsListGroup fetchAddress={'/api/posts/following/'} user={user} />
-            ) : (
-                'You are not following anyone.'
-            )}
+            <PostsListGroup fetchAddress={'/api/posts/following/'} user={user} />
         </div>
     );
 }

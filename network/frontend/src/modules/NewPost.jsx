@@ -4,7 +4,7 @@ import TextArea from '../components/TextArea';
 import getCSRFToken from '../utils/csrf';
 import apiFetch from '../utils/apiFetch';
 
-function NewPost({ onUpdate }) {
+function NewPost({ onPost }) {
     const [content, setContent] = useState('');
     const [message, setMessage] = useState([]);
 
@@ -17,7 +17,7 @@ function NewPost({ onUpdate }) {
                 } else {
                     setMessage(feedback.message);
                     setContent('');
-                    onUpdate();
+                    onPost();
                 }
             });
     }
