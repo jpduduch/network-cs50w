@@ -15,7 +15,9 @@
     "date_joined": "2026-06-24T08:52:59.512Z",
     "groups": [],
     "user_permissions": [],
-    "following": []
+    "following": [
+      2
+    ]
   }
 },
 {
@@ -1167,7 +1169,9 @@
     "content": "1321313 ",
     "author": 1,
     "date": "2026-07-24T12:57:53.685Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
