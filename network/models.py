@@ -8,8 +8,16 @@ class User(AbstractUser):
         "self", related_name="followers", blank=True, symmetrical=False
     )
 
-    def is_followed(self, viewer):
-        return self.followers.filter(pk=viewer.pk).exists() if viewer else False
+    def serialize(self, viewer):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "followers": self.followers.count(),
+            "following": self.following.count(),
+            "is_followed": (
+                self.followers.filter(pk=viewer.pk).exists() if viewer else False
+            ),
+        }
 
 
 class Post(models.Model):

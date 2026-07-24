@@ -12,13 +12,6 @@ function Profile({ user }) {
     const [followError, setFollowError] = useState(null);
 
     // fetch requested profile info
-    useEffect(() => {
-        fetch(`/api/users/${username}`)
-            .then((response) => response.json())
-            .then((body) => {
-                setProfileData(body);
-            });
-    }, []);
 
     console.log(profileData);
 
@@ -65,11 +58,7 @@ function Profile({ user }) {
 
             <h6>Posts</h6>
 
-            <PostsListGroup
-                posts={profileData.posts}
-                paginationInfo={profileData.page}
-                user={user}
-            />
+            <PostsListGroup fetchAddress={`/api/posts/user/${username}/`} user={user} />
         </main>
     );
 }

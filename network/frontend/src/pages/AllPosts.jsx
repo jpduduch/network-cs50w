@@ -7,13 +7,6 @@ function AllPosts({ user }) {
     const [pageData, setPageData] = useState({});
     const [refreshTrigger, setRefreshTrigger] = useState(0);
 
-    // updates all posts every submission
-    useEffect(() => {
-        fetch('/api/posts/')
-            .then((response) => response.json())
-            .then((data) => setPageData(data));
-    }, [refreshTrigger]);
-
     function updateCounter() {
         setRefreshTrigger((prev) => prev + 1);
     }
@@ -22,7 +15,7 @@ function AllPosts({ user }) {
         <div className=" d-flex flex-column gap-2">
             <h1>All posts</h1>
             {user ? <NewPost onUpdate={updateCounter} /> : null}
-            <PostsListGroup posts={pageData.posts} paginationInfo={pageData.page} user={user} />
+            <PostsListGroup fetchAddress={'/api/posts/all/'} user={user} newPost={refreshTrigger} />
         </div>
     );
 }

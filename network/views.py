@@ -144,15 +144,16 @@ def me(request):
 
 
 @require_GET
-def posts(request):
-
-    requested_page = request.GET.get("page") if not None else 1
+def posts(request, username=None):
+    requested_page = request.GET.get("page", 1)
     user = request.user if request.user.is_authenticated else None
-    all_posts = _get_posts_queryset()
+
+    profile = get_object_or_404(User, username=username) if username else None
+    posts = _get_posts_queryset(post_creator=profile)
 
     return JsonResponse(
         _get_posts_per_page(
-            posts=all_posts, page_number=requested_page, has_like_from=user
+            posts=posts, page_number=requested_page, has_like_from=user
         ),
         safe=False,
     )
@@ -161,10 +162,11 @@ def posts(request):
 @require_GET
 @login_required(login_url="/login/")
 def following(request):
-
+    requested_page = request.GET.get("page", 1)
     user = request.user if request.user.is_authenticated else None
-    requested_page = request.GET.get("page") if not None else 1
+
     following_list = request.user.following.all()
+
     posts_from_following = _get_posts_queryset(post_creator=following_list)
     page = _get_posts_per_page(
         posts=posts_from_following, page_number=requested_page, has_like_from=user
@@ -174,25 +176,8 @@ def following(request):
 
 
 def profile(request, username):
-
-    requested_page = request.GET.get("page") if not None else 1
-    user = request.user if request.user.is_authenticated else None
     profile = get_object_or_404(User, username=username)
-    posts_from_profile = _get_posts_queryset(post_creator=profile)
-    page = _get_posts_per_page(
-        posts=posts_from_profile, page_number=requested_page, has_like_from=user
-    )
-
-    return JsonResponse(
-        {
-            "id": profile.id,
-            "username": profile.username,
-            "followers": profile.followers.count(),
-            "following": profile.following.count(),
-            "is_followed": profile.is_followed(request.user),
-        }
-        | page
-    )
+    return JsonResponse(profile.serialize(viewer=request.user))
 
 
 # utils
@@ -208,8 +193,6 @@ def _get_posts_queryset(post_creator=None):
     else:
         qs = Post.objects.filter(author__in=post_creator)
 
-    # _Fix performance bug. This should be in get_posts_per_page function
-    # Transform Queryset into list
     return qs.order_by("-date")
 
 
