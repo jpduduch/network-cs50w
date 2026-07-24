@@ -1,7 +1,6 @@
-import Icon from './icon/Icon.jsx'
+import Icon from './icon/Icon.jsx';
 
 function Button({ label, icon, onClick, hierarchy }) {
-
     let btnVariant;
 
     if (hierarchy === 'primary') {
@@ -11,11 +10,14 @@ function Button({ label, icon, onClick, hierarchy }) {
     }
 
     return (
-        <button className={`d-flex btn ${btnVariant} justify-content-center align-items-center align-self-start gap-2`}  onClick={onClick}>
-            { icon ? <Icon value={ icon } /> : null }
+        <button
+            className={`d-flex btn ${btnVariant} justify-content-center align-items-center align-self-start gap-2`}
+            onClick={onClick}
+        >
+            {icon ? <Icon value={icon} /> : null}
             {label}
         </button>
-    )
+    );
 }
 
-export default Button
+export default Button;

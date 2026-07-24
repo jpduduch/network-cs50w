@@ -1,9 +1,9 @@
-function Caption ({ value }) {
+function Caption({ value }) {
     return (
         <div>
-            <small>{ value }</small>
+            <small>{value}</small>
         </div>
-    )
+    );
 }
 
-export default Caption
+export default Caption;

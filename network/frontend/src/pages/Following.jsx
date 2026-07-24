@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
-import PostsListGroup from "../modules/PostsListGroup";
+import { useEffect, useState } from 'react';
+import PostsListGroup from '../modules/PostsListGroup';
 
-function Following({user}) {
-    
-    const [posts, setPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        fetch('/api/following/')
-        .then(response => response.json())
-        .then(body => {
-            setPosts(body);
-            setIsLoading(false);
-        })
-    }, [])
-
+function Following({ user }) {
+    const [hasFollowers, setHasFollowers] = useState(false);
     if (!user) {
-        window.location.href = "/login/"
+        window.location.href = '/login/';
     }
 
-    return(
+    useEffect(() => {
+        async function followingInfo() {
+            const response = await fetch(`/api/users/${user.username}/`);
+            const metadata = await response.json();
+            setHasFollowers(metadata.following !== 0 ? true : false);
+        }
+        followingInfo();
+    }, [user]);
+
+    return (
         <div>
-            { isLoading ? "Loading posts…" : null }
-            { posts.length === 0 && isLoading === false ? "You are not following anyone." :  <PostsListGroup postsArray={posts} user={user} /> }
+            <PostsListGroup fetchAddress={'/api/posts/following/'} user={user} />
         </div>
-    )
+    );
 }
 
-export default Following
+export default Following;

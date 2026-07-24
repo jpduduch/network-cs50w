@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-17T10:17:33.493Z",
+    "last_login": "2026-07-24T09:06:00.179Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -25,7 +25,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Wioxs4922kzwnFlQOV5S28$wg085ublEK9NWfFnKujabQOww2Z8GC80DKUYw38X858=",
-    "last_login": "2026-07-14T13:16:40.682Z",
+    "last_login": "2026-07-22T14:20:38.108Z",
     "is_superuser": false,
     "username": "ron",
     "first_name": "",
@@ -59,13 +59,34 @@
   }
 },
 {
+  "model": "network.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ySknebMP0S5wRoSSyJZwtT$ISQMMhpySQQaM+CMhwz3HjqR37Kz9t/0wdAftkjqOR4=",
+    "last_login": "2026-07-24T17:23:41.651Z",
+    "is_superuser": false,
+    "username": "hermione",
+    "first_name": "",
+    "last_name": "",
+    "email": "hermione@hogwarts.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-24T17:23:05.022Z",
+    "groups": [],
+    "user_permissions": [],
+    "following": []
+  }
+},
+{
   "model": "network.post",
   "pk": 1,
   "fields": {
     "content": "teste",
     "author": 1,
     "date": "2026-06-25T14:48:47.985Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -1031,8 +1052,7 @@
     "author": 2,
     "date": "2026-07-14T12:22:44.785Z",
     "likes": [
-      1,
-      2
+      1
     ]
   }
 },
@@ -1078,8 +1098,133 @@
     "author": 1,
     "date": "2026-07-17T10:19:49.026Z",
     "likes": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 99,
+  "fields": {
+    "content": "New post",
+    "author": 2,
+    "date": "2026-07-22T14:32:41.888Z",
+    "likes": [
       1
     ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 100,
+  "fields": {
+    "content": "teste",
+    "author": 1,
+    "date": "2026-07-24T09:08:01.840Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 101,
+  "fields": {
+    "content": "fdsfs d",
+    "author": 1,
+    "date": "2026-07-24T09:08:07.594Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 102,
+  "fields": {
+    "content": "rwer wer ",
+    "author": 1,
+    "date": "2026-07-24T09:08:12.727Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 103,
+  "fields": {
+    "content": "a24234 2",
+    "author": 1,
+    "date": "2026-07-24T09:11:25.446Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 104,
+  "fields": {
+    "content": " e23e32",
+    "author": 1,
+    "date": "2026-07-24T09:11:28.552Z",
+    "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 105,
+  "fields": {
+    "content": "dadasdqweqwe ",
+    "author": 1,
+    "date": "2026-07-24T12:57:48.710Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 106,
+  "fields": {
+    "content": "1321313 ",
+    "author": 1,
+    "date": "2026-07-24T12:57:53.685Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 107,
+  "fields": {
+    "content": "dqe2q qe qw",
+    "author": 1,
+    "date": "2026-07-24T14:37:01.060Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 108,
+  "fields": {
+    "content": "eqweq",
+    "author": 1,
+    "date": "2026-07-24T14:37:04.795Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 109,
+  "fields": {
+    "content": "Hello there.",
+    "author": 4,
+    "date": "2026-07-24T17:23:59.367Z",
+    "likes": []
   }
 },
 {
@@ -1160,6 +1305,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "6m94z4rjnkaxal6l24ig3xrf300jm0lb",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wmnbr:Y3wGZ8I4g953klsP5Bgj6ke8BFm2VsqgPRXbs7l7JSg",
+    "expire_date": "2026-08-06T07:12:47.375Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "79cql0t22s8kq08uavhr0pcwswlko7k9",
   "fields": {
     "session_data": "e30:1wcfJH:afum8pO0cLnFZ_2B6llf-2431prqydCiy37zAqlAP6A",
@@ -1180,6 +1333,22 @@
   "fields": {
     "session_data": ".eJxVjMsOwiAQRf-FtSEMlEdduvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3TgQ2FGYINBqTtQUEz9mXomggp8bC6JLSbHTybAMwEpB32QYVkhnE-wP-HThY:1wiAO2:Ag2gqZNOm9Gpc4wewotMgWVk8SAy9b7iXlqCR4BAzUQ",
     "expire_date": "2026-07-24T12:31:22.499Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "9u36j4ykllnd2cbru1xr3n9fzom71ha7",
+  "fields": {
+    "session_data": "e30:1wnJc1:1CGjCAPkS2O37W8g_Sdv_f-VPPzsoyUStAIyTl1I8iM",
+    "expire_date": "2026-08-07T17:23:05.152Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "bb79hcadwnoc02pgrgi2pp8khnj96fr7",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyGBXUA8evcbyLKLUjU0Ke2p8d9tkx70Npn3ZlaVaJlrWnqZ0iDqolCdfrtM_CptB_Kk9hg1j22ehqx3RR-069so5X093L-DSr1uawa0IEQlAAabz8GzK8RkMW4ZPTqDdwwIXpwtFgDRiPEQMwvlGNTnC8w3Nxg:1wnJcb:moDsNY0qrBE86uezz36Vbb2Bo-bqiB--9_Fm1vA3TYY",
+    "expire_date": "2026-08-07T17:23:41.652Z"
   }
 },
 {
@@ -1212,6 +1381,14 @@
   "fields": {
     "session_data": "e30:1wceRw:Lmp_2_Sf1NL6cX7PTW2yurrDze1wPef_xTNGDgJuKGU",
     "expire_date": "2026-07-09T07:24:36.517Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "lqonlg22ewcoy7sk2lv3u4h2axs0vcv2",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSEMlEdduvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3TgQ2FGYINBqTtQUEz9mXomggp8bC6JLSbHTybAMwEpB32QYVkhnE-wP-HThY:1wmXoM:RtZ-FU8FDnMbGYPvw05KHJCmNzoA3W-xI8BZxskCq4Q",
+    "expire_date": "2026-08-05T14:20:38.109Z"
   }
 },
 {

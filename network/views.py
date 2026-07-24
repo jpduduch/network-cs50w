@@ -3,17 +3,20 @@ from django.middleware.csrf import get_token
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from django.core.paginator import Paginator
 from django.db import IntegrityError
+from django.db.models.query import QuerySet
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods, require_POST
+from django.views.decorators.http import require_GET, require_http_methods, require_POST
 
 
 from .models import User, Post
 
-def layout(request, username = None):
-    
+
+def shell(request, username=None):
+
     # place CSRF token into request variable sent to client
     get_token(request)
     return render(request, "network/layout.html")
@@ -32,9 +35,11 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("layout"))
         else:
-            return render(request, "network/login.html", {
-                "message": "Invalid username and/or password."
-            })
+            return render(
+                request,
+                "network/login.html",
+                {"message": "Invalid username and/or password."},
+            )
     else:
         return render(request, "network/login.html")
 
@@ -53,20 +58,20 @@ def register(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, "network/register.html", {
-                "message": "Passwords must match."
-            })
+            return render(
+                request, "network/register.html", {"message": "Passwords must match."}
+            )
 
         # Attempt to create new user
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "network/register.html", {
-                "message": "Username already taken."
-            })
+            return render(
+                request, "network/register.html", {"message": "Username already taken."}
+            )
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("layout"))
     else:
         return render(request, "network/register.html")
 
@@ -76,7 +81,7 @@ def register(request):
 @login_required(login_url="/login/")
 @require_POST
 def send_post(request):
-    
+
     data = json.loads(request.body)
     post = Post(content=data["content"], author=request.user)
 
@@ -85,7 +90,7 @@ def send_post(request):
         post.full_clean()
         post.save()
 
-        #Validation errors are return messages that explain why a specific field has failed to be added to database.
+        # Validation errors are return messages that explain why a specific field has failed to be added to database.
     except ValidationError as e:
         return JsonResponse({"error": e.message_dict}, status=400)
 
@@ -95,14 +100,12 @@ def send_post(request):
 @login_required(login_url="/login/")
 @require_http_methods(["POST", "DELETE"])
 def toggle_like(request, post_id):
-    
+
     post = get_object_or_404(Post, pk=post_id)
     user = request.user
-    post.likes.add(user) if request.method == 'POST' else post.likes.remove(user)
+    post.likes.add(user) if request.method == "POST" else post.likes.remove(user)
 
-    return JsonResponse({
-        'response': "ok"
-    }, status=201)
+    return JsonResponse({"response": "ok"}, status=201)
 
 
 @login_required(login_url="/login/")
@@ -113,63 +116,103 @@ def toggle_follow(request, user_id):
     follower = request.user
 
     if not user_to_be_followed == follower:
-        user_to_be_followed.followers.add(follower) if request.method == 'POST' else user_to_be_followed.followers.remove(follower)
+        (
+            user_to_be_followed.followers.add(follower)
+            if request.method == "POST"
+            else user_to_be_followed.followers.remove(follower)
+        )
 
-        return JsonResponse({
-            'response': 'ok'
-        }, status=201)
-    
-    return JsonResponse({
-        'error': 'You cannot follow yourself.'
-    }, status=400)
+        return JsonResponse({"response": "ok"}, status=201)
+
+    return JsonResponse({"error": "You cannot follow yourself."}, status=400)
 
 
+# ------------
 # GET
-@require_http_methods(["GET"])
-@login_required(login_url='/login/')
-def following(request):
-
-    following_list = request.user.following.all()
-    posts_from_following = Post.objects.filter(author__in=following_list).order_by('-date')
-
-    return JsonResponse([post.serialize(viewer=request.user) for post in posts_from_following], safe=False)
-
-
+@require_GET
 def me(request):
     if request.user.is_authenticated:
-        return JsonResponse({
-            "id": request.user.id,
-            "username": request.user.username,
-        }, status=200)
-    
-    return JsonResponse({
-        "error": "Not authenticated."
-    }, status=401)
+        return JsonResponse(
+            {
+                "id": request.user.id,
+                "username": request.user.username,
+            },
+            status=200,
+        )
+
+    return JsonResponse({"error": "Not authenticated."}, status=401)
 
 
-def posts(request):
-
+@require_GET
+def posts(request, username=None):
+    requested_page = request.GET.get("page", 1)
     user = request.user if request.user.is_authenticated else None
-    posts = _get_posts_queryset()
-    return JsonResponse([post.serialize(viewer=user) for post in posts], safe=False)
+
+    profile = get_object_or_404(User, username=username) if username else None
+    posts = _get_posts_queryset(post_creator=profile)
+
+    return JsonResponse(
+        _get_posts_per_page(
+            posts=posts, page_number=requested_page, has_like_from=user
+        ),
+        safe=False,
+    )
 
 
-def profile_info(request, username):
+@require_GET
+@login_required(login_url="/login/")
+def following(request):
+    requested_page = request.GET.get("page", 1)
+    user = request.user if request.user.is_authenticated else None
 
+    following_list = request.user.following.all()
+
+    posts_from_following = _get_posts_queryset(post_creator=following_list)
+    page = _get_posts_per_page(
+        posts=posts_from_following, page_number=requested_page, has_like_from=user
+    )
+
+    return JsonResponse(page)
+
+
+def profile(request, username):
     profile = get_object_or_404(User, username=username)
-    posts = _get_posts_queryset(profile)
-
-    return JsonResponse({
-        'id': profile.id,
-        'username': profile.username,
-        'followers': profile.followers.count(),
-        'following': profile.following.count(),
-        'is_following': profile.is_following(request.user),
-        'posts': [post.serialize(viewer=request.user) for post in posts]
-    }, safe=False)
+    return JsonResponse(profile.serialize(viewer=request.user))
 
 
 # utils
-def _get_posts_queryset(author=None):
-    qs = Post.objects.all() if author is None else Post.objects.filter(author=author)
-    return qs.order_by('-date')
+def _get_posts_queryset(post_creator=None):
+
+    # Check if author exists, if it is a single one or several
+    if type(post_creator) != QuerySet:
+        qs = (
+            Post.objects.all()
+            if post_creator is None
+            else Post.objects.filter(author=post_creator)
+        )
+    else:
+        qs = Post.objects.filter(author__in=post_creator)
+
+    return qs.order_by("-date")
+
+
+def _get_posts_per_page(
+    posts,
+    page_number,
+    has_like_from=None,
+):
+
+    pages = Paginator(posts, 10)
+    page = pages.get_page(page_number)
+
+    page_data = {
+        "posts": [post.serialize(has_like_from=has_like_from) for post in page],
+        "page": {
+            "has_next": page.has_next(),
+            "has_prev": page.has_previous(),
+            "range": pages.num_pages,
+            "current": page.number,
+        },
+    }
+
+    return page_data

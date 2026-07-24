@@ -1,14 +1,14 @@
-import getCSRFToken from "./csrf";
+import getCSRFToken from './csrf';
 
-function apiFetch(url, method = "GET", body = null) {
+function apiFetch(url, method = 'GET', body = null) {
     return fetch(url, {
         method: method,
         headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": getCSRFToken()
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken(),
         },
-        body: body ? JSON.stringify(body) : undefined
-    })
+        body: body ? JSON.stringify(body) : undefined,
+    });
 }
 
-export default apiFetch
+export default apiFetch;
