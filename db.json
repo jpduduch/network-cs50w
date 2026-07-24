@@ -59,6 +59,25 @@
   }
 },
 {
+  "model": "network.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ySknebMP0S5wRoSSyJZwtT$ISQMMhpySQQaM+CMhwz3HjqR37Kz9t/0wdAftkjqOR4=",
+    "last_login": "2026-07-24T17:23:41.651Z",
+    "is_superuser": false,
+    "username": "hermione",
+    "first_name": "",
+    "last_name": "",
+    "email": "hermione@hogwarts.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-24T17:23:05.022Z",
+    "groups": [],
+    "user_permissions": [],
+    "following": []
+  }
+},
+{
   "model": "network.post",
   "pk": 1,
   "fields": {
@@ -1199,6 +1218,16 @@
   }
 },
 {
+  "model": "network.post",
+  "pk": 109,
+  "fields": {
+    "content": "Hello there.",
+    "author": 4,
+    "date": "2026-07-24T17:23:59.367Z",
+    "likes": []
+  }
+},
+{
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
@@ -1268,14 +1297,6 @@
 },
 {
   "model": "sessions.session",
-  "pk": "5g8nesh1hvn85o7hvz0q8o3vyde6w9dk",
-  "fields": {
-    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wnBqy:uCReJhIIG-cP8MqD4vabQG3E65z_6ZKHy-rO9mB2OgE",
-    "expire_date": "2026-08-07T09:06:00.180Z"
-  }
-},
-{
-  "model": "sessions.session",
   "pk": "5sw7qaix5stm0dsgscdaf2mhd7ym1gf3",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wk0uz:mnyI9e5PSqDcaWm-H9-y6xqNmJtsihBC1DsaLulNSXI",
@@ -1312,6 +1333,22 @@
   "fields": {
     "session_data": ".eJxVjMsOwiAQRf-FtSEMlEdduvcbyAwDUjU0Ke3K-O_apAvd3nPOfYmI21rj1vMSJxZnocXpdyNMj9x2wHdst1mmua3LRHJX5EG7vM6cn5fD_Tuo2Ou3TgQ2FGYINBqTtQUEz9mXomggp8bC6JLSbHTybAMwEpB32QYVkhnE-wP-HThY:1wiAO2:Ag2gqZNOm9Gpc4wewotMgWVk8SAy9b7iXlqCR4BAzUQ",
     "expire_date": "2026-07-24T12:31:22.499Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "9u36j4ykllnd2cbru1xr3n9fzom71ha7",
+  "fields": {
+    "session_data": "e30:1wnJc1:1CGjCAPkS2O37W8g_Sdv_f-VPPzsoyUStAIyTl1I8iM",
+    "expire_date": "2026-08-07T17:23:05.152Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "bb79hcadwnoc02pgrgi2pp8khnj96fr7",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyGBXUA8evcbyLKLUjU0Ke2p8d9tkx70Npn3ZlaVaJlrWnqZ0iDqolCdfrtM_CptB_Kk9hg1j22ehqx3RR-069so5X093L-DSr1uawa0IEQlAAabz8GzK8RkMW4ZPTqDdwwIXpwtFgDRiPEQMwvlGNTnC8w3Nxg:1wnJcb:moDsNY0qrBE86uezz36Vbb2Bo-bqiB--9_Fm1vA3TYY",
+    "expire_date": "2026-08-07T17:23:41.652Z"
   }
 },
 {

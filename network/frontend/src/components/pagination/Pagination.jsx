@@ -22,15 +22,18 @@ function Pagination({ page, onSelect }) {
                     }}
                 />
             ) : null}
-            {pagesArray?.map((number) => (
-                <PageItem
-                    key={number}
-                    value={number}
-                    onClick={() => {
-                        onSelect(number);
-                    }}
-                />
-            ))}
+            {pageRange > 1
+                ? pagesArray?.map((number) => (
+                      <PageItem
+                          key={number}
+                          value={number}
+                          onClick={() => {
+                              onSelect(number);
+                          }}
+                          isActive={number === currentPage ? true : false}
+                      />
+                  ))
+                : null}
             {hasNext ? (
                 <PageItem
                     value="Next"
