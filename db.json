@@ -1089,7 +1089,9 @@
     "content": "New post",
     "author": 2,
     "date": "2026-07-22T14:32:41.888Z",
-    "likes": []
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -1166,6 +1168,30 @@
     "author": 1,
     "date": "2026-07-24T12:57:53.685Z",
     "likes": []
+  }
+},
+{
+  "model": "network.post",
+  "pk": 107,
+  "fields": {
+    "content": "dqe2q qe qw",
+    "author": 1,
+    "date": "2026-07-24T14:37:01.060Z",
+    "likes": [
+      1
+    ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 108,
+  "fields": {
+    "content": "eqweq",
+    "author": 1,
+    "date": "2026-07-24T14:37:04.795Z",
+    "likes": [
+      1
+    ]
   }
 },
 {

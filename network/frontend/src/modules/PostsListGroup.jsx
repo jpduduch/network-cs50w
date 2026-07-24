@@ -1,23 +1,32 @@
 import Pagination from '../components/pagination/Pagination';
 import Post from '../components/Post';
 import { useEffect, useState } from 'react';
+import apiFetch from '../utils/apiFetch';
 
 function PostsListGroup({ fetchAddress, user, newPost = 0 }) {
     const [posts, setPosts] = useState([]);
     const [paginationInfo, setPaginationInfo] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [page, setPage] = useState(1);
 
     // update post list after submissions
     useEffect(() => {
         async function fetchPageData() {
-            const response = await fetch(fetchAddress);
+            setIsLoading(true);
+            setPosts([]);
+
+            const response = await apiFetch(`${fetchAddress}?page=${page}`);
             const data = await response.json();
             setPosts(data.posts);
             setPaginationInfo(data.page);
             setIsLoading(false);
         }
         fetchPageData();
-    }, [newPost]);
+    }, [newPost, page, fetchAddress]);
+
+    function loadPage(requestedPage = 1) {
+        setPage(requestedPage);
+    }
 
     return (
         <div>
@@ -32,12 +41,7 @@ function PostsListGroup({ fetchAddress, user, newPost = 0 }) {
                     ))}
                 </ul>
             )}
-            <Pagination
-                hasPrev={paginationInfo?.has_prev}
-                hasNext={paginationInfo?.has_next}
-                numPages={paginationInfo?.range}
-                currentPage={paginationInfo?.current}
-            />
+            <Pagination page={paginationInfo} onSelect={loadPage} />
         </div>
     );
 }

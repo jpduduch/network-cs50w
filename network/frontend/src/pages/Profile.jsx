@@ -18,8 +18,6 @@ function Profile({ user }) {
             .then((profile) => setProfileData(profile));
     }, []);
 
-    console.log(profileData);
-
     // follow / unfollow behavior
     function toggleFollow() {
         const url = `/api/users/${profileData.id}/toggle-follow`;
