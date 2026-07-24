@@ -22,6 +22,15 @@ function Pagination({ page, onSelect }) {
                     }}
                 />
             ) : null}
+            {pagesArray?.map((number) => (
+                <PageItem
+                    key={number}
+                    value={number}
+                    onClick={() => {
+                        onSelect(number);
+                    }}
+                />
+            ))}
             {hasNext ? (
                 <PageItem
                     value="Next"
