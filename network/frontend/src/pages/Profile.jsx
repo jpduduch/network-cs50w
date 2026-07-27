@@ -9,13 +9,20 @@ import Caption from '../components/Caption';
 function Profile({ user }) {
     const { username } = useParams();
     const [profileData, setProfileData] = useState({});
-    const [followError, setFollowError] = useState(null);
 
     // fetch requested profile info
     useEffect(() => {
-        apiFetch(`/api/users/${username}/`)
-            .then((response) => response.json())
-            .then((profile) => setProfileData(profile));
+        async function loadProfile() {
+            const response = await fetch(`/api/users/${username}/`);
+            let profile = {};
+            if (response.ok) {
+                profile = await response.json();
+            } else {
+                profile = { error: `Could not find profile named '${username}.'` };
+            }
+            setProfileData(profile);
+        }
+        loadProfile();
     }, []);
 
     // follow / unfollow behavior
@@ -40,28 +47,32 @@ function Profile({ user }) {
 
     return (
         <main className="d-flex gap-4 flex-column">
-            <h3>{profileData.username}</h3>
-            <div className="d-flex gap-4">
-                <span>
-                    <span className="fw-bold">{profileData.followers}</span>{' '}
-                    <span className="text-body-secondary">followers</span>
-                </span>
-                <span>
-                    <span className="fw-bold">{profileData.following}</span>{' '}
-                    <span className="text-body-secondary">following</span>
-                </span>
-            </div>
-
-            {user && user.username !== profileData.username ? (
-                <FollowButton isFollowing={profileData.is_followed} onClick={toggleFollow} />
-            ) : null}
-            {followError ? <Caption value={followError} /> : null}
-
-            <hr />
-
-            <h6>Posts</h6>
-
-            <PostsListGroup fetchAddress={`/api/posts/users/${username}/`} user={user} />
+            {profileData.error ? (
+                profileData.error
+            ) : (
+                <>
+                    <h3>{profileData.username}</h3>
+                    <div className="d-flex gap-4">
+                        <span>
+                            <span className="fw-bold">{profileData.followers}</span>{' '}
+                            <span className="text-body-secondary">followers</span>
+                        </span>
+                        <span>
+                            <span className="fw-bold">{profileData.following}</span>{' '}
+                            <span className="text-body-secondary">following</span>
+                        </span>
+                    </div>
+                    {user && user.username !== profileData.username ? (
+                        <FollowButton
+                            isFollowing={profileData.is_followed}
+                            onClick={toggleFollow}
+                        />
+                    ) : null}
+                    <hr />
+                    <h6>Posts</h6>
+                    <PostsListGroup fetchAddress={`/api/posts/users/${username}/`} user={user} />
+                </>
+            )}
         </main>
     );
 }

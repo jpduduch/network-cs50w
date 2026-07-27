@@ -175,6 +175,7 @@ def following(request):
     return JsonResponse(page)
 
 
+@require_GET
 def profile(request, username):
     profile = get_object_or_404(User, username=username)
     return JsonResponse(profile.serialize(viewer=request.user))
