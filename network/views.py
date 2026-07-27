@@ -86,7 +86,7 @@ def send_post(request):
     post = Post(content=data["content"], author=request.user)
 
     try:
-        # Method .full_clean() validates all fields of a model instance and raises ValidationErrors if any issues are found.
+        # Method .full_clean() validates all fields of a model instance and raises ValidationErrors if any issues are found. Any errors immediately interrupt block execution and jumps to except block
         post.full_clean()
         post.save()
 
