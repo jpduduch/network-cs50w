@@ -16,7 +16,8 @@
     "groups": [],
     "user_permissions": [],
     "following": [
-      2
+      2,
+      4
     ]
   }
 },
@@ -1338,6 +1339,17 @@
     "likes": [
       1
     ]
+  }
+},
+{
+  "model": "network.post",
+  "pk": 110,
+  "fields": {
+    "content": "sda wqrwe",
+    "author": 1,
+    "date": "2026-07-28T12:01:55.538Z",
+    "is_edited": false,
+    "likes": []
   }
 },
 {

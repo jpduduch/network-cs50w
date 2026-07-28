@@ -70,7 +70,7 @@ function Profile({ user }) {
                     ) : null}
                     <hr />
                     <h6>Posts</h6>
-                    <PostsListGroup fetchAddress={`/api/posts/users/${username}/`} user={user} />
+                    <PostsListGroup fetchAddress={`/api/users/${username}/posts/`} user={user} />
                 </>
             )}
         </main>
