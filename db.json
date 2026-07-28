@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$JMo05MT0KHeToVcBPDBlNf$9cqcd1GSt46rDAyuXxHb5YIuVYW19SfbeAIC1vtWNSE=",
-    "last_login": "2026-07-27T08:35:31.008Z",
+    "last_login": "2026-07-28T07:30:32.519Z",
     "is_superuser": false,
     "username": "harry",
     "first_name": "",
@@ -84,6 +84,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-06-25T14:48:47.985Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -96,6 +97,7 @@
     "content": "teste 2",
     "author": 1,
     "date": "2026-06-26T11:51:23.928Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -106,6 +108,7 @@
     "content": "test",
     "author": 1,
     "date": "2026-06-26T12:09:31.319Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -116,6 +119,7 @@
     "content": "teast2 23",
     "author": 1,
     "date": "2026-06-26T12:10:11.490Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -126,6 +130,7 @@
     "content": "dasda ad ad ",
     "author": 1,
     "date": "2026-06-26T12:10:16.813Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -136,6 +141,7 @@
     "content": "dadqre wrew ",
     "author": 1,
     "date": "2026-06-26T12:18:57.611Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -146,6 +152,7 @@
     "content": "ghfy5ty5",
     "author": 1,
     "date": "2026-06-28T14:19:00.971Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -156,6 +163,7 @@
     "content": "dsadasda",
     "author": 1,
     "date": "2026-06-28T14:19:04.434Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -166,6 +174,7 @@
     "content": "dasdas",
     "author": 1,
     "date": "2026-06-28T14:19:14.857Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -176,6 +185,7 @@
     "content": "dsada",
     "author": 1,
     "date": "2026-06-28T14:19:32.678Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -186,6 +196,7 @@
     "content": "dasda",
     "author": 1,
     "date": "2026-06-28T14:19:39.368Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -196,6 +207,7 @@
     "content": "dsadas",
     "author": 1,
     "date": "2026-06-28T14:19:48.653Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -206,6 +218,7 @@
     "content": "Test",
     "author": 1,
     "date": "2026-06-30T08:22:44.266Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -216,6 +229,7 @@
     "content": "A sintaxe básica do map() é:\njavascriptconst novoArray = array.map((elemento, indice, arrayOriginal) => {\n  return // valor transformado\n});\nOs parâmetros do callback são:\n\nelemento: o item atual sendo processado\nindice (opcional): a posição do item no array\narrayOriginal (opcional): referência ao array original",
     "author": 1,
     "date": "2026-06-30T13:04:28.982Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -226,6 +240,7 @@
     "content": " CENA INUSITADA | Um homem levou um susto ao perceber uma grande quantidade de terra sendo expulsa de um buraco. Intrigado com a cena, resolveu se aproximar para descobrir o que estava acontecendo.\n\n rafaell.batatta (ig) | \n@myhoodbr",
     "author": 1,
     "date": "2026-06-30T13:18:55.024Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -236,6 +251,7 @@
     "content": "It was the same intensity as the Venezuela earthquake, and no homes collapsed.\n\nThe earthquake measured around magnitude 7.4–7, with its epicenter near the Sanriku coast (Iwate Prefecture), a highly active seismic zone along the “Pacific Ring of Fire.”",
     "author": 1,
     "date": "2026-06-30T13:22:19.134Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -246,6 +262,7 @@
     "content": "Because the movement of that earthquake in Japan was linear. The problem in Venezuela was the second earthquake that brought waves from another direction, causing a pendulum-like motion, as seen in videos of flowerpots. Very few constructions can withstand that type of combined earthquake.\n",
     "author": 1,
     "date": "2026-06-30T13:22:52.219Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -256,6 +273,7 @@
     "content": "Earthquakes release waves in all directions, and since they argue that, they expose that they really don't know anything about what they're trying to talk about.\n",
     "author": 1,
     "date": "2026-06-30T13:23:53.734Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -266,6 +284,7 @@
     "content": "Epic Games CEO Tim Sweeney says Steam is missing out on millions of PC players because it doesn’t have games like Fortnite, Riot Games titles, or Genshin Impact.\n\nSweeney said Valve has “a nice thing going on on PC,” but added that Steam is “missing out on a lot of opportunity” by not having those games available on the platform.\n\nSweeney also said Epic wants to work with Valve in the future, explaining, “We would love to interoperate with every company willing and to connect all the gamers.”",
     "author": 1,
     "date": "2026-06-30T13:24:15.932Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -276,6 +295,7 @@
     "content": "Former PlayStation boss Shawn Layden says he doesn’t think Sony should stop bringing PlayStation games to PC.\n\nLayden explained that the strategy was never just about making more money. \nHe said many PC players “weren’t going to buy the hardware anyway,” so releasing games on PC gave Sony a chance to reach people who were never going to buy a PlayStation console.\n\nHe also criticized people who say PC releases hurt PlayStation, saying:\n\n“I love how everyone online is a marketing/business analyst and darn near a part-time psychologist that understands the ins and outs of consumer spending and purchasing habits better than billion-dollar organizations.”\n",
     "author": 1,
     "date": "2026-06-30T13:27:24.035Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -286,6 +306,7 @@
     "content": "During a California Senate committee hearing on the Protect Our Games Act (AB 1921) the ESA lobbyist Jennifer Gibbons said that community-run Minecraft servers ARE ILLEGAL  under CURRENT, ALREADY EXISTING LAW\n\nThe comment came as the ESA opposed the bill, which aims to prevent games from becoming unplayable after publishers shut down official servers.\n",
     "author": 1,
     "date": "2026-06-30T13:29:30.148Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -296,6 +317,7 @@
     "content": "According to Variety, Netflix is developing a live-action TV series based on the Persona game franchise.\n\nThe series will be produced by 21 Laps, the studio behind Stranger Things. SEGA’s Toru Nakahara is also attached as an executive producer.\n\nLet's see how Netflix ruins this.",
     "author": 1,
     "date": "2026-06-30T13:30:10.070Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -306,6 +328,7 @@
     "content": "An Apple Watch Ultra was badly damaged after its owner crashed a motorcycle while trying to avoid a car, but the owner believes the watch protected the arm from a much worse injury.\n\nThe owner said, “My chunky titanium AWU took direct and full impact of my fall, which thankfully saved my arm from full contact to the pavement.”\n",
     "author": 1,
     "date": "2026-06-30T13:32:56.617Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -316,6 +339,7 @@
     "content": "These Apple Watches can be lifesavers. From being able to ping your phone when you lose it, fall detection if you take a nasty fall, or being able to detect erratic and irregular heart beats\n",
     "author": 1,
     "date": "2026-06-30T13:33:18.022Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -326,6 +350,7 @@
     "content": "The upcoming Metroidvania SHADE Protocol has already reached more than 150,000 Steam wishlists and 10,000 Steam followers. \n\nThe studio called the campaign “life-changing for our team.”\n\nThe Kickstarter campaign has raised over $275,000, far surpassing its original $40,000 funding goal.\n\n“We hit 150K+ wishlists, 10K followers on Steam, and surpassed $230K on Kickstarter all in the same day… and THEN Emi Evans, vocalist for NieR Automata and Dark Souls amongst many other games, shares that she’s a stretch goal for our game. Don’t wake me up please!”",
     "author": 1,
     "date": "2026-06-30T13:34:21.107Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -336,6 +361,7 @@
     "content": "George Broussard  says he has heard from an internal source that Xbox could close several studios and will be like “the meteor that took out the dinosaurs.”\n\nHe isn’t sharing the names but says the information came from someone inside the company.\n\nBroussard said that if the information is true, it could be the biggest round of layoffs the gaming industry has ever seen. He also claims that even the studios that stay open will face layoffs.\n\n“If it’s even close to true (and it’s from inside), this will likely be the largest single layoff event in gaming history.”\n\n“Xbox is going to be supremely unpopular for a very long time, and the devastation is going to reverberate like the meteor that took out the dinosaurs.”",
     "author": 1,
     "date": "2026-06-30T13:35:11.502Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -346,6 +372,7 @@
     "content": "George Broussard  says he has heard from an internal source that Xbox could close several studios and will be like “the meteor that took out the dinosaurs.”\n\nHe isn’t sharing the names but says the information came from someone inside the company.\n\nBroussard said that if the information is true, it could be the biggest round of layoffs the gaming industry has ever seen. He also claims that even the studios that stay open will face layoffs.\n\n“If it’s even close to true (and it’s from inside), this will likely be the largest single layoff event in gaming history.”\n\n“Xbox is going to be supremely unpopular for a very long time, and the devastation is going to reverberate like the meteor that took out the dinosaurs.”",
     "author": 1,
     "date": "2026-06-30T13:35:32.078Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -356,6 +383,7 @@
     "content": "MetaPCs has announced one of the first modern prebuilt gaming PCs that comes with SteamOS already installed instead of Windows.\n\nThe Steamroller includes:\n- AMD Ryzen 5 9600X\n- AMD Radeon RX 7600 (8GB)\n- 16GB DDR5 RAM\n- 1TB NVMe SSD\n- SteamOS pre-installed\n\nThe PC starts at $1,299 and uses standard desktop components, making it easy to upgrade in the future.",
     "author": 1,
     "date": "2026-06-30T13:36:35.889Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -366,6 +394,7 @@
     "content": "MetaPCs has announced one of the first modern prebuilt gaming PCs that comes with SteamOS already installed instead of Windows.\n\nThe Steamroller includes:\n- AMD Ryzen 5 9600X\n- AMD Radeon RX 7600 (8GB)\n- 16GB DDR5 RAM\n- 1TB NVMe SSD\n- SteamOS pre-installed\n\nThe PC starts at $1,299 and uses standard desktop components, making it easy to upgrade in the future.",
     "author": 1,
     "date": "2026-06-30T13:37:16.853Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -376,6 +405,7 @@
     "content": "dad asdas ",
     "author": 1,
     "date": "2026-06-30T13:38:01.544Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -386,6 +416,7 @@
     "content": "da asd s",
     "author": 1,
     "date": "2026-06-30T13:45:53.761Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -396,6 +427,7 @@
     "content": "eae",
     "author": 1,
     "date": "2026-06-30T13:47:03.208Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -406,6 +438,7 @@
     "content": "dasdas",
     "author": 1,
     "date": "2026-06-30T13:47:07.258Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -416,6 +449,7 @@
     "content": "teadasdq",
     "author": 1,
     "date": "2026-06-30T13:47:27.175Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -426,6 +460,7 @@
     "content": "daqeqw",
     "author": 1,
     "date": "2026-06-30T13:50:04.030Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -436,6 +471,7 @@
     "content": "da adsqw eqw ",
     "author": 1,
     "date": "2026-06-30T13:57:48.751Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -446,6 +482,7 @@
     "content": "qweqw131",
     "author": 1,
     "date": "2026-06-30T13:58:18.600Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -456,6 +493,7 @@
     "content": "dsadasdqwweq",
     "author": 1,
     "date": "2026-06-30T13:58:33.412Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -466,6 +504,7 @@
     "content": "sdqwe13",
     "author": 1,
     "date": "2026-06-30T13:58:44.011Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -476,6 +515,7 @@
     "content": "dq2eqeqw ",
     "author": 1,
     "date": "2026-06-30T14:00:30.498Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -486,6 +526,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-06-30T14:00:40.819Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -496,6 +537,7 @@
     "content": "tesdaa 42134",
     "author": 1,
     "date": "2026-06-30T14:03:24.260Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -506,6 +548,7 @@
     "content": "novo post",
     "author": 1,
     "date": "2026-06-30T14:05:42.144Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -516,6 +559,7 @@
     "content": "trew ",
     "author": 1,
     "date": "2026-06-30T14:06:44.678Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -526,6 +570,7 @@
     "content": "eqweqw",
     "author": 1,
     "date": "2026-06-30T14:06:46.118Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -536,6 +581,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-06-30T14:11:14.697Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -546,6 +592,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-06-30T14:11:16.978Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -556,6 +603,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-06-30T14:16:07.908Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -566,6 +614,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-06-30T14:16:09.617Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -576,6 +625,7 @@
     "content": "1",
     "author": 1,
     "date": "2026-06-30T14:16:13.011Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -586,6 +636,7 @@
     "content": "1",
     "author": 1,
     "date": "2026-06-30T14:16:15.271Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -596,6 +647,7 @@
     "content": "2",
     "author": 1,
     "date": "2026-06-30T14:16:18.563Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -606,6 +658,7 @@
     "content": "2",
     "author": 1,
     "date": "2026-06-30T14:16:20.748Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -616,6 +669,7 @@
     "content": "3",
     "author": 1,
     "date": "2026-06-30T14:17:10.998Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -626,6 +680,7 @@
     "content": "e",
     "author": 1,
     "date": "2026-06-30T14:17:15.303Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -636,6 +691,7 @@
     "content": "1",
     "author": 1,
     "date": "2026-06-30T14:17:17.883Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -646,6 +702,7 @@
     "content": "123",
     "author": 1,
     "date": "2026-06-30T14:18:00.342Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -656,6 +713,7 @@
     "content": "dsa",
     "author": 1,
     "date": "2026-06-30T14:18:03.603Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -666,6 +724,7 @@
     "content": "daeqw",
     "author": 1,
     "date": "2026-06-30T14:18:18.154Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -676,6 +735,7 @@
     "content": "1312",
     "author": 1,
     "date": "2026-06-30T14:18:21.365Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -686,6 +746,7 @@
     "content": "dadsaq",
     "author": 1,
     "date": "2026-06-30T14:18:55.535Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -696,6 +757,7 @@
     "content": "q",
     "author": 1,
     "date": "2026-06-30T14:19:01.266Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -706,6 +768,7 @@
     "content": "q",
     "author": 1,
     "date": "2026-06-30T14:19:03.455Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -716,6 +779,7 @@
     "content": "q",
     "author": 1,
     "date": "2026-06-30T14:19:05.210Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -726,6 +790,7 @@
     "content": "Now, we’ll define the inputKeyPress function. In this function, we’ll first check whether the Enter key was pressed, and then check to see if the answer is correct. When the user is correct, we want to increase the score by 1, choose random numbers for the next problem, and clear the response. If the answer is incorrect, we want to decrease the score by 1 and clear the response.\n\n",
     "author": 1,
     "date": "2026-06-30T14:20:29.662Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -736,6 +801,7 @@
     "content": "Capcom has opened up about how difficult Pragmata’s early development really was,\nDirector Cho Yonghee said the team’s first playable versions received very harsh feedback from inside Capcom.\n\n“It was devastating,” “We were told that the game wasn’t interesting at all.”\n\nInstead of giving up, the team rebuilt big parts of the game.\n\nCho said, “Our failures guided us to success.”\n\nProducer Naoto Oyama added that the team kept improving the game through playtesting and feedback until they found the right balance between shooting, hacking, and exploration.",
     "author": 1,
     "date": "2026-06-30T14:24:33.978Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -746,6 +812,7 @@
     "content": "Capcom has opened up about how difficult Pragmata’s early development really was,\nDirector Cho Yonghee said the team’s first playable versions received very harsh feedback from inside Capcom.\n\n“It was devastating,” “We were told that the game wasn’t interesting at all.”\n\nInstead of giving up, the team rebuilt big parts of the game.\n\nCho said, “Our failures guided us to success.”\n\nProducer Naoto Oyama added that the team kept improving the game through playtesting and feedback until they found the right balance between shooting, hacking, and exploration.",
     "author": 1,
     "date": "2026-06-30T14:24:57.028Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -756,6 +823,7 @@
     "content": "The PlayStation post about the end of physical media has been Community Noted.\n\nIt has also received nearly 70,000 replies, with people extremely mad about it. This could be one of the Playstationbiggest backlash in recent years.\n\nPlayStation has also stopped posting since announcing the change.\n\n“Digital purchases grant a revocable license to access content, not ownership. Sony recently removed hundreds of purchased StudioCanal movies from libraries due to licensing.”\n",
     "author": 2,
     "date": "2026-07-03T12:47:06.030Z",
+    "is_edited": false,
     "likes": [
       2
     ]
@@ -768,6 +836,7 @@
     "content": "tyradqwe234 ",
     "author": 1,
     "date": "2026-07-06T13:07:14.504Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -778,6 +847,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-07-07T09:16:43.727Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -788,6 +858,7 @@
     "content": "teste",
     "author": 1,
     "date": "2026-07-07T09:20:34.830Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -798,6 +869,7 @@
     "content": "132131",
     "author": 1,
     "date": "2026-07-07T09:20:37.547Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -808,6 +880,7 @@
     "content": "13123123",
     "author": 1,
     "date": "2026-07-07T09:20:40.798Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -818,6 +891,7 @@
     "content": "256456",
     "author": 1,
     "date": "2026-07-07T09:20:44.834Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -828,6 +902,7 @@
     "content": "134423 42",
     "author": 1,
     "date": "2026-07-07T09:20:58.576Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -838,6 +913,7 @@
     "content": "`2`22`1",
     "author": 1,
     "date": "2026-07-07T09:21:02.572Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -850,6 +926,7 @@
     "content": "23432423",
     "author": 1,
     "date": "2026-07-07T09:21:13.577Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -860,6 +937,7 @@
     "content": "42342",
     "author": 1,
     "date": "2026-07-07T09:26:17.600Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -870,6 +948,7 @@
     "content": "3234",
     "author": 1,
     "date": "2026-07-07T09:26:51.977Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -880,6 +959,7 @@
     "content": "ffgg",
     "author": 1,
     "date": "2026-07-07T09:26:55.968Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -892,6 +972,7 @@
     "content": "11dd",
     "author": 1,
     "date": "2026-07-07T09:26:58.562Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -904,6 +985,7 @@
     "content": "fsdgdgs",
     "author": 1,
     "date": "2026-07-07T09:27:15.691Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -916,6 +998,7 @@
     "content": "t2434 353535q",
     "author": 1,
     "date": "2026-07-07T09:34:59.076Z",
+    "is_edited": false,
     "likes": [
       1,
       2
@@ -929,6 +1012,7 @@
     "content": "eqwe23424",
     "author": 1,
     "date": "2026-07-07T10:58:07.179Z",
+    "is_edited": false,
     "likes": [
       2
     ]
@@ -941,6 +1025,7 @@
     "content": "Python is the language of the aristocratic, the delegation class. We leave the static typing and manual memory management to the peasants.",
     "author": 2,
     "date": "2026-07-07T11:28:11.524Z",
+    "is_edited": false,
     "likes": [
       1,
       2
@@ -954,6 +1039,7 @@
     "content": "isso aqui vai martelar minha cabeça pelos próximos 4 anos até uma eliminação igualmente bizarra pra Noruega na Copa de 2026",
     "author": 2,
     "date": "2026-07-07T11:53:20.309Z",
+    "is_edited": false,
     "likes": [
       1,
       2
@@ -967,6 +1053,7 @@
     "content": "teasda asd\n",
     "author": 2,
     "date": "2026-07-14T12:16:17.993Z",
+    "is_edited": false,
     "likes": [
       2
     ]
@@ -979,6 +1066,7 @@
     "content": "e4234 2",
     "author": 2,
     "date": "2026-07-14T12:16:27.127Z",
+    "is_edited": false,
     "likes": [
       1,
       2
@@ -992,6 +1080,7 @@
     "content": "342342",
     "author": 2,
     "date": "2026-07-14T12:17:36.667Z",
+    "is_edited": false,
     "likes": [
       2
     ]
@@ -1004,6 +1093,7 @@
     "content": "242342131",
     "author": 2,
     "date": "2026-07-14T12:17:46.687Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -1014,6 +1104,7 @@
     "content": "234236325",
     "author": 2,
     "date": "2026-07-14T12:21:52.225Z",
+    "is_edited": false,
     "likes": [
       2
     ]
@@ -1026,6 +1117,7 @@
     "content": "cs sf sew",
     "author": 2,
     "date": "2026-07-14T12:22:00.025Z",
+    "is_edited": false,
     "likes": [
       2
     ]
@@ -1038,6 +1130,7 @@
     "content": "1234234 2adsdf",
     "author": 2,
     "date": "2026-07-14T12:22:40.386Z",
+    "is_edited": false,
     "likes": [
       1,
       2
@@ -1051,6 +1144,7 @@
     "content": "asd sdc s",
     "author": 2,
     "date": "2026-07-14T12:22:44.785Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1063,6 +1157,7 @@
     "content": "23423",
     "author": 1,
     "date": "2026-07-14T13:09:21.093Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1075,6 +1170,7 @@
     "content": "er2423",
     "author": 1,
     "date": "2026-07-14T13:24:34.588Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1087,6 +1183,7 @@
     "content": "swqtwer \n",
     "author": 1,
     "date": "2026-07-17T10:19:37.508Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -1097,6 +1194,7 @@
     "content": "Mais um post.",
     "author": 1,
     "date": "2026-07-17T10:19:49.026Z",
+    "is_edited": false,
     "likes": [
       1,
       2
@@ -1110,6 +1208,7 @@
     "content": "New post",
     "author": 2,
     "date": "2026-07-22T14:32:41.888Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1119,10 +1218,13 @@
   "model": "network.post",
   "pk": 100,
   "fields": {
-    "content": "teste",
+    "content": "slporra",
     "author": 1,
     "date": "2026-07-24T09:08:01.840Z",
-    "likes": []
+    "is_edited": false,
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -1132,6 +1234,7 @@
     "content": "fdsfs d",
     "author": 1,
     "date": "2026-07-24T09:08:07.594Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1144,6 +1247,7 @@
     "content": "rwer wer ",
     "author": 1,
     "date": "2026-07-24T09:08:12.727Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -1154,6 +1258,7 @@
     "content": "a24234 2",
     "author": 1,
     "date": "2026-07-24T09:11:25.446Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1166,6 +1271,7 @@
     "content": " e23e32",
     "author": 1,
     "date": "2026-07-24T09:11:28.552Z",
+    "is_edited": false,
     "likes": []
   }
 },
@@ -1173,9 +1279,10 @@
   "model": "network.post",
   "pk": 105,
   "fields": {
-    "content": "dadasdqweqwe ",
+    "content": "editar post",
     "author": 1,
     "date": "2026-07-24T12:57:48.710Z",
+    "is_edited": true,
     "likes": [
       1
     ]
@@ -1185,9 +1292,10 @@
   "model": "network.post",
   "pk": 106,
   "fields": {
-    "content": "1321313 ",
+    "content": "oporra",
     "author": 1,
     "date": "2026-07-24T12:57:53.685Z",
+    "is_edited": false,
     "likes": [
       1
     ]
@@ -1197,9 +1305,10 @@
   "model": "network.post",
   "pk": 107,
   "fields": {
-    "content": "dqe2q qe qw",
+    "content": "editar esse post",
     "author": 1,
     "date": "2026-07-24T14:37:01.060Z",
+    "is_edited": true,
     "likes": [
       1
     ]
@@ -1209,9 +1318,10 @@
   "model": "network.post",
   "pk": 108,
   "fields": {
-    "content": "eqweq",
+    "content": "oporra",
     "author": 1,
     "date": "2026-07-24T14:37:04.795Z",
+    "is_edited": true,
     "likes": [
       1
     ]
@@ -1224,7 +1334,10 @@
     "content": "Hello there.",
     "author": 4,
     "date": "2026-07-24T17:23:59.367Z",
-    "likes": []
+    "is_edited": false,
+    "likes": [
+      1
+    ]
   }
 },
 {
@@ -1421,6 +1534,14 @@
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wiBH3:UZ_I_mEEbV8up52NJyNPinKtd3IkdMiY9xPeaasWAXg",
     "expire_date": "2026-07-24T13:28:13.028Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "uiegm7kig8bc47cb2ws5t4i3uwg3yb6i",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCmDEVcuu8ZCDCDVA0kpV0Z765NutDtf-_9l_BhW4vfOi9-JnERIE6_WwzpwXUHdA_11mRqdV3mKHdFHrTLqRE_r4f7d1BCL996zGARszPnpEJ2kIHRjIqUHtAYS8zkGCGBNpE1kh6sVcnlZB1CzCjeH9CAN34:1wocGm:tTsX7qLyO_jtiY-QWluVzpwgRJVJgZ3u3jkGTG9Vzkc",
+    "expire_date": "2026-08-11T07:30:32.520Z"
   }
 },
 {

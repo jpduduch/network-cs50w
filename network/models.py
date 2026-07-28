@@ -25,6 +25,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name="liked_posts", blank=True)
+    is_edited = models.BooleanField(default=False)
 
     def has_like(self, viewer):
         return self.likes.filter(pk=viewer.pk).exists() if viewer else False
@@ -37,4 +38,5 @@ class Post(models.Model):
             "date": self.date.strftime("%b %d %Y, %I:%M %p"),
             "likes": self.likes.count(),
             "has_like": self.has_like(has_like_from),
+            "is_edited": self.is_edited,
         }

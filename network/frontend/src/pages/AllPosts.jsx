@@ -17,7 +17,7 @@ function AllPosts({ user }) {
             <h1>All posts</h1>
             {user ? <NewPost onPost={updatePosts} /> : null}
             <PostsListGroup fetchAddress={'/api/posts/all/'} user={user} newPost={refreshTrigger} />
-            <Modal>test</Modal>
+            {/* <Modal>test</Modal> */}
         </div>
     );
 }

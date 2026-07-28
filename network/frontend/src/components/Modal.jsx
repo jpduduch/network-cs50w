@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import Button from './Button';
 
-function Modal({ title, children }) {
+function Modal({ title, primaryAction, onClose, children }) {
     return createPortal(
         <div className="modal fade show" tabIndex={-1} style={{ display: 'block' }}>
             <div className="modal-dialog">
@@ -11,14 +11,14 @@ function Modal({ title, children }) {
                         <button
                             type="button"
                             className="btn-close"
-                            data-bs-dismiss="modal"
                             aria-label="close"
+                            onClick={onClose}
                         ></button>
                     </div>
                     <div className="modal-body">{children}</div>
                     <div className="modal-footer">
-                        <Button label="Close" hierarchy="secondary" />
-                        <Button label="Save changes" hierarchy="primary" />
+                        <Button label="Close" hierarchy="secondary" onClick={onClose} />
+                        <Button label="Save changes" hierarchy="primary" onClick={primaryAction} />
                     </div>
                 </div>
             </div>

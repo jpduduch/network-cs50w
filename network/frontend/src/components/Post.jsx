@@ -9,40 +9,31 @@ import Caption from './Caption';
 import Modal from './Modal';
 
 function Post({ metadata, user }) {
-    const [like, setLike] = useState({
-        isTrue: metadata.has_like,
-        count: metadata.likes,
-    });
+    // Post component
+    const [postContent, setPostContent] = useState(metadata.content);
+    const [isEdited, setIsEdited] = useState(metadata.is_edited);
 
-    const [content, setContent] = useState(metadata.content);
+    // Modal
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [updateContent, setUpdateContent] = useState(metadata.content);
+    const [captionMessage, setCaptionMessage] = useState('');
 
-    function toggleLike() {
-        if (!user) {
-            window.location.href = '/login/';
+    async function updatePost() {
+        const response = await apiFetch(`/api/posts/${metadata.id}/update/`, 'PATCH', {
+            content: updateContent,
+        });
+        if (!response.ok) {
+            setCaptionMessage('Something went wrong. Try again.');
+            return;
         }
-
-        let method;
-
-        if (like.isTrue && user) {
-            setLike((prev) => ({
-                ...prev,
-                isTrue: false,
-                count: prev.count - 1,
-            }));
-
-            method = 'DELETE';
-        } else if (!like.isTrue && user) {
-            setLike((prev) => ({
-                ...prev,
-                isTrue: true,
-                count: prev.count + 1,
-            }));
-
-            method = 'POST';
+        const feedback = await response.json();
+        if ('error' in feedback) {
+            setCaptionMessage(feedback.error);
+        } else {
+            setIsModalOpen(false);
+            setPostContent(feedback.content);
+            setIsEdited(true);
         }
-
-        apiFetch(`/api/posts/${metadata.id}/toggle-like/`, method);
     }
 
     return (
@@ -58,30 +49,43 @@ function Post({ metadata, user }) {
                                 {' '}
                                 <small>{metadata.author}</small>{' '}
                             </Link>
-                            <small>{metadata.date}</small>
+                            <small>{`${isEdited ? '(Edited)' : ''} ${metadata.date}`}</small>
                         </div>
-                        <p class="mb-1">{metadata.content}</p>
+                        <p class="mb-1">{postContent}</p>
                     </div>
                     <div id="button-row" className="d-flex flex-row justify-content-between">
                         <LikeButton
-                            likeCount={like.count}
-                            hasLike={like.isTrue}
-                            onClick={toggleLike}
+                            likeCount={metadata.likes}
+                            hasLike={metadata.has_like}
+                            postID={metadata.id}
+                            user={user}
                         />
-                        {metadata.author === user.username ? (
+                        {user && metadata.author === user.username ? (
                             <div className="d-flex flex-row justify-content-end gap-2">
                                 <Button
                                     label={'Edit post'}
                                     hierarchy={'secondary'}
                                     onClick={() => setIsModalOpen(true)}
                                 />
-                                <Button hierarchy={'secondary'} icon={'delete'} />
                             </div>
                         ) : null}
                     </div>
                 </div>
             </div>
-            {isModalOpen && <Modal>test</Modal>}
+            {isModalOpen && (
+                <Modal
+                    title="Edit post"
+                    onClose={() => setIsModalOpen(false)}
+                    primaryAction={updatePost}
+                >
+                    <TextArea
+                        label="Edit post…"
+                        value={updateContent}
+                        onChange={setUpdateContent}
+                        caption={captionMessage}
+                    />
+                </Modal>
+            )}
         </>
     );
 }
