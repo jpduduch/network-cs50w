@@ -12,11 +12,12 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     # api calls
     path("api/posts/all/", views.posts, name="api_all_posts"),
-    path("api/posts/users/<str:username>/", views.posts, name="api_all_posts"),
+    path("api/posts/<int:post_id>/update/", views.update_post, name="api_update_post"),
     path("api/posts/following/", views.following, name="api_following"),
     path("api/send-post/", views.send_post, name="api_send_post"),
     path("api/users/me/", views.me, name="me"),
     path("api/users/<str:username>/", views.profile, name="api_profile"),
+    path("api/users/<str:username>/posts/", views.posts, name="api_all_posts"),
     path(
         "api/users/<int:user_id>/toggle-follow",
         views.toggle_follow,

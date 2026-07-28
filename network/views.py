@@ -77,7 +77,7 @@ def register(request):
 
 
 # API calls
-# POST and delete
+# POST, PATCH and DELETE
 @login_required(login_url="/login/")
 @require_POST
 def send_post(request):
@@ -86,7 +86,7 @@ def send_post(request):
     post = Post(content=data["content"], author=request.user)
 
     try:
-        # Method .full_clean() validates all fields of a model instance and raises ValidationErrors if any issues are found.
+        # Method .full_clean() validates all fields of a model instance and raises ValidationErrors if any issues are found. Any errors immediately interrupt block execution and jumps to except block
         post.full_clean()
         post.save()
 
@@ -95,6 +95,29 @@ def send_post(request):
         return JsonResponse({"error": e.message_dict}, status=400)
 
     return JsonResponse({"message": "Post sent successfully."}, status=201)
+
+
+@login_required(login_url="/login/")
+@require_http_methods(["PATCH"])
+def update_post(request, post_id):
+
+    post = get_object_or_404(Post, pk=post_id)
+    if not post.author == request.user:
+        return JsonResponse(
+            {"error": "You can only edit posts you created."}, status=403
+        )
+
+    data = json.loads(request.body)
+    post.content = data.get("content", post.content)
+    post.is_edited = True
+
+    try:
+        post.full_clean()
+        post.save()
+    except ValidationError as e:
+        return JsonResponse({"error": e.message_dict}, status=400)
+
+    return JsonResponse({"id": post.id, "content": post.content})
 
 
 @login_required(login_url="/login/")

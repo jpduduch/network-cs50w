@@ -446,3 +446,69 @@ class ProfileViewTests(TestCase):
     def test_profile_nonexistent_user_returns_404(self):
         response = self.client.get(self.profile_url("nao_existe"))
         self.assertEqual(response.status_code, 404)
+
+
+class UpdatePostTestCase(TestCase):
+
+    def setUp(self):
+        self.author = User.objects.create_user(username="alice", password="pass123")
+        self.other_user = User.objects.create_user(username="bob", password="pass123")
+        self.post = Post.objects.create(author=self.author, content="Original content")
+
+    def test_author_can_update_post(self):
+        self.client.login(username="alice", password="pass123")
+        response = self.client.patch(
+            reverse("api_update_post", args=[self.post.id]),
+            data=json.dumps({"content": "Updated content"}),
+            content_type="application/json",
+        )
+        self.post.refresh_from_db()
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.post.content, "Updated content")
+        self.assertTrue(self.post.is_edited)
+
+    def test_unauthenticated_user_cannot_update(self):
+        response = self.client.patch(
+            reverse("api_update_post", args=[self.post.id]),
+            data=json.dumps({"content": "Hacked content"}),
+            content_type="application/json",
+        )
+        self.post.refresh_from_db()
+        self.assertNotEqual(response.status_code, 200)
+        self.assertEqual(self.post.content, "Original content")
+
+    def test_non_author_cannot_update(self):
+        self.client.login(username="bob", password="pass123")
+        response = self.client.patch(
+            reverse("api_update_post", args=[self.post.id]),
+            data=json.dumps({"content": "Hacked content"}),
+            content_type="application/json",
+        )
+        self.post.refresh_from_db()
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(self.post.content, "Original content")
+
+    def test_update_nonexistent_post_returns_404(self):
+        self.client.login(username="alice", password="pass123")
+        response = self.client.patch(
+            reverse("api_update_post", args=[9999]),
+            data=json.dumps({"content": "Doesn't matter"}),
+            content_type="application/json",
+        )
+        self.assertEqual(response.status_code, 404)
+
+    def test_update_with_invalid_content_returns_400(self):
+        self.client.login(username="alice", password="pass123")
+        response = self.client.patch(
+            reverse("api_update_post", args=[self.post.id]),
+            data=json.dumps({"content": ""}),
+            content_type="application/json",
+        )
+        self.post.refresh_from_db()
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(self.post.content, "Original content")
+
+    def test_get_method_not_allowed(self):
+        self.client.login(username="alice", password="pass123")
+        response = self.client.get(reverse("api_update_post", args=[self.post.id]))
+        self.assertEqual(response.status_code, 405)

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import NewPost from '../modules/NewPost';
 import Post from '../components/Post';
 import PostsListGroup from '../modules/PostsListGroup';
+import Modal from '../components/Modal';
 
 function AllPosts({ user }) {
     const [pageData, setPageData] = useState({});
@@ -16,6 +17,7 @@ function AllPosts({ user }) {
             <h1>All posts</h1>
             {user ? <NewPost onPost={updatePosts} /> : null}
             <PostsListGroup fetchAddress={'/api/posts/all/'} user={user} newPost={refreshTrigger} />
+            {/* <Modal>test</Modal> */}
         </div>
     );
 }
